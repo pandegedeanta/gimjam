@@ -1,0 +1,276 @@
+[gd_scene load_steps=14 format=3 uid="uid://chypsekmc632t"]
+
+[ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="1_bx5pa"]
+[ext_resource type="Texture2D" uid="uid://naecw05gu28y" path="res://assets/background/bedroom.png" id="1_uxcuu"]
+[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="2_0grwd"]
+[ext_resource type="Texture2D" uid="uid://cdr13pucf72h1" path="res://assets/interior/bedroom.png" id="3_uxcuu"]
+[ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/door.gd" id="4_a8uiq"]
+[ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
+[ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="6_a8uiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(2922, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxcuu"]
+size = Vector2(10, 864)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxsp2"]
+size = Vector2(4.4285927, 45.42859)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8uiq"]
+size = Vector2(14.000002, 22.285713)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_genkd"]
+size = Vector2(16.000006, 18.28572)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lauwj"]
+atlas = ExtResource("3_uxcuu")
+region = Rect2(1024, 3076, 1024, 1024)
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+position = Vector2(-640, -360)
+
+[node name="Background" type="Node2D" parent="World"]
+
+[node name="Background" type="Sprite2D" parent="World/Background"]
+position = Vector2(640, 360)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_uxcuu")
+
+[node name="World_Boundaries" type="Node2D" parent="World"]
+
+[node name="Floor" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor"]
+position = Vector2(475, 208)
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left"]
+position = Vector2(-640, 8)
+shape = SubResource("RectangleShape2D_uxcuu")
+
+[node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right"]
+position = Vector2(704, 0)
+shape = SubResource("RectangleShape2D_uxcuu")
+
+[node name="Interior" type="Node2D" parent="World"]
+
+[node name="Bed" type="Sprite2D" parent="World/Interior"]
+position = Vector2(186.99997, 485)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(-24.769043, 245.51184, 1070.6296, 555.9922)
+
+[node name="Wardobe" type="Sprite2D" parent="World/Interior"]
+position = Vector2(520, 417)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(5353.444, 38.941666, 545.8833, 935.078)
+
+[node name="Table" type="Sprite2D" parent="World/Interior"]
+position = Vector2(984, 499)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(68.53284, 2304.0042, 887.2916, 520.9785)
+
+[node name="Book" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1032, 404)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(2302.832, 1297.4175, 577.96045, 455.8562)
+
+[node name="Desk_Lamp" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1059, 393)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(1328.5533, 181.48668, 404.35828, 444.7942)
+
+[node name="Vase" type="Sprite2D" parent="World/Interior"]
+position = Vector2(910, 395)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(1311.8455, 1300.1636, 439.74, 490.2848)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("sprite", "laci")]
+scale = Vector2(0.34999996, 0.34999996)
+script = ExtResource("4_a8uiq")
+sprite = NodePath("Sprite2D")
+laci = NodePath("../Drawer")
+koordinat_tutup = Rect2(2048, 2048, 1024, 1024)
+koordinat_buka = Rect2(3072, 2048, 1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Door"]
+position = Vector2(1969.1436, 137.71423)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(2048, 2048, 1024, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Door"]
+position = Vector2(1984.8572, 137.7142)
+scale = Vector2(19.999994, 19.999994)
+shape = SubResource("RectangleShape2D_fxsp2")
+
+[node name="Painting" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+position = Vector2(91, 144)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("5_lauwj")
+ui_node = NodePath("../../UI")
+sprite = NodePath("Sprite2D")
+overlay_rect = Rect2(1024, 3072, 1024, 1024)
+region_closed = Rect2(0, 3072, 1024, 1024)
+region_open_full = Rect2(4096, 2048, 1024, 1024)
+region_open_empty = Rect2(5120, 2048, 1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Painting"]
+position = Vector2(17.142975, -445.7141)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(0, 3072, 1024, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Painting"]
+position = Vector2(8.571472, -454.28558)
+scale = Vector2(19.999994, 19.999994)
+shape = SubResource("RectangleShape2D_a8uiq")
+
+[node name="Drawer" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+position = Vector2(91, 144)
+scale = Vector2(0.34999996, 0.34999996)
+script = ExtResource("5_lauwj")
+ui_node = NodePath("../../UI")
+sprite = NodePath("Sprite2D")
+overlay_rect = Rect2(5120, 3072, 1024, 1024)
+is_locked = true
+correct_code = "6767"
+region_closed = Rect2(2048, 3072, 1024, 1024)
+region_open_full = Rect2(4096, 3072, 1024, 1024)
+region_open_empty = Rect2(3072, 3072, 1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Drawer"]
+position = Vector2(20.000015, -2.8571472)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(2048, 3072, 1024, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Drawer"]
+position = Vector2(11.428589, -5.7142944)
+scale = Vector2(19.999994, 19.999994)
+shape = SubResource("RectangleShape2D_genkd")
+
+[node name="Player" parent="." instance=ExtResource("1_bx5pa")]
+position = Vector2(-456, 204)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_0grwd")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -1039.9999)
+scale = Vector2(4.9999995, 4.9999995)
+limit_left = -640
+limit_top = 0
+limit_right = 704
+limit_bottom = 0
+position_smoothing_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("6_a8uiq")
+
+[node name="Dimmer" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="ItemDisplay" type="TextureRect" parent="UI"]
+custom_minimum_size = Vector2(315.8, 315.8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.9
+offset_top = -157.9
+offset_right = 157.9
+offset_bottom = 157.9
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lauwj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CodeInput" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="UI/CodeInput"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
+[node name="LineEdit" type="LineEdit" parent="UI/CodeInput/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+placeholder_text = "####"
+alignment = 1
+max_length = 4
+
+[node name="EnterButton" type="Button" parent="UI/CodeInput/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -31.0
+offset_right = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "ENTER"
+
+[connection signal="gui_input" from="UI/Dimmer" to="UI" method="_on_dimmer_gui_input"]
+[connection signal="gui_input" from="UI/ItemDisplay" to="UI" method="_on_item_display_gui_input"]
+[connection signal="text_submitted" from="UI/CodeInput/Background/LineEdit" to="UI" method="_on_enter_pressed"]
+[connection signal="pressed" from="UI/CodeInput/Background/EnterButton" to="UI" method="_on_enter_pressed"]
