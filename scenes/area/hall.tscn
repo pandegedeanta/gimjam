@@ -1,14 +1,230 @@
-[gd_scene format=3 uid="uid://jy82l7mg8hxm"]
+[gd_scene load_steps=13 format=3 uid="uid://jy82l7mg8hxm"]
+
+[ext_resource type="Texture2D" uid="uid://ce3lgf63pp3xk" path="res://assets/background/hall.png" id="1_p5um2"]
+[ext_resource type="Texture2D" uid="uid://ddfd8yfghv8n7" path="res://assets/interior/hall.png" id="2_tc2fy"]
+[ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="3_1imld"]
+[ext_resource type="Texture2D" uid="uid://cdr13pucf72h1" path="res://assets/interior/bedroom.png" id="4_1imld"]
+[ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="5_7hk8q"]
+[ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="6_eg0f6"]
+[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="7_a30p6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x40yp"]
+size = Vector2(2922, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc2fy"]
+size = Vector2(10, 864)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5um2"]
+size = Vector2(305, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpimn"]
+size = Vector2(152, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74n6y"]
+size = Vector2(24, 320)
 
 [node name="Hall" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="World" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="Sprite2D" parent="World"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_p5um2")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="World_Boundaries" type="Node2D" parent="World"]
+position = Vector2(-192, -41)
+
+[node name="Floor" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor"]
+position = Vector2(-920, -111)
+shape = SubResource("RectangleShape2D_x40yp")
+
+[node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left"]
+position = Vector2(-1192, -360)
+shape = SubResource("RectangleShape2D_tc2fy")
+
+[node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries"]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right"]
+position = Vector2(512, -360)
+shape = SubResource("RectangleShape2D_tc2fy")
+
+[node name="Interior" type="Node2D" parent="World"]
+position = Vector2(-280, -40)
+
+[node name="Table_Lamp" type="Sprite2D" parent="World/Interior"]
+position = Vector2(814, 211)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(3072, 0, 1024, 1024)
+
+[node name="Hanging_Clothes" type="Sprite2D" parent="World/Interior"]
+position = Vector2(583, 101)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1imld")
+region_enabled = true
+region_rect = Rect2(3072, 3072, 1024, 1024)
+
+[node name="Table" type="Sprite2D" parent="World/Interior"]
+position = Vector2(307.2, 177)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(0, 3072, 1024, 1024)
+
+[node name="Vase" type="Sprite2D" parent="World/Interior"]
+position = Vector2(391.19995, 218)
+rotation = 0.31066865
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(2048, 1024, 1024, 1024)
+
+[node name="Candle" type="Sprite2D" parent="World/Interior"]
+position = Vector2(231.20007, 85.00001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(2048, 3072, 1024, 1024)
+
+[node name="Book" type="Sprite2D" parent="World/Interior"]
+position = Vector2(307.19995, 94)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(0, 2048, 1024, 1024)
+
+[node name="Opened_Book" type="Sprite2D" parent="World/Interior"]
+position = Vector2(275.19995, 103.99999)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(3072, 2048, 1024, 1024)
+
+[node name="Painting" type="Sprite2D" parent="World/Interior"]
+position = Vector2(87.999985, 0)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_1imld")
+region_enabled = true
+region_rect = Rect2(0, 3072, 1024, 1024)
+
+[node name="Lamp" type="Sprite2D" parent="World/Interior"]
+position = Vector2(-59.200005, -166.20004)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_1imld")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Lamp2" type="Sprite2D" parent="World/Interior"]
+position = Vector2(736.80005, -166.20004)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_1imld")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Interactables" type="Node2D" parent="."]
+position = Vector2(-193, -40)
+
+[node name="Stairs" type="Area2D" parent="Interactables"]
+position = Vector2(1000.5, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Stairs"]
+shape = SubResource("RectangleShape2D_p5um2")
+
+[node name="Parents_Room_Door" type="Area2D" parent="Interactables"]
+position = Vector2(-239, 88)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Parents_Room_Door"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_tc2fy")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Parents_Room_Door"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_hpimn")
+
+[node name="Bedroom_Door" type="Area2D" parent="Interactables"]
+position = Vector2(-536, 89)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Bedroom_Door"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_1imld")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(3072, 2048, 1024, 1024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bedroom_Door"]
+position = Vector2(-5, 2)
+shape = SubResource("RectangleShape2D_74n6y")
+
+[node name="Shadow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1280.0
+offset_top = -752.0
+offset_right = -1240.0
+offset_bottom = -712.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Dark" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 232.0
+offset_right = 2288.0
+offset_bottom = 1208.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.32941177)
+metadata/_edit_use_anchors_ = true
+
+[node name="LampLight" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 547.0
+offset_right = 1773.0
+offset_bottom = 1243.0
+rotation = 0.7853982
+mouse_filter = 2
+color = Color(1, 1, 1, 0.078431375)
+metadata/_edit_use_anchors_ = true
+
+[node name="LampLight2" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = 1737.0001
+offset_top = 546.00006
+offset_right = 2569.0
+offset_bottom = 1242.0
+rotation = 0.7853982
+mouse_filter = 2
+color = Color(1, 1, 1, 0.078431375)
+metadata/_edit_use_anchors_ = true
+
+[node name="Border" type="Node2D" parent="."]
+position = Vector2(-640, -376)
+
+[node name="BackgroundWithNoWallpapper" type="Sprite2D" parent="Border"]
+position = Vector2(640, 376)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_7hk8q")
+
+[node name="Player" parent="." instance=ExtResource("6_eg0f6")]
+position = Vector2(-683.00006, 206.00002)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("7_a30p6")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -1039.9999)
+scale = Vector2(4.9999995, 4.9999995)
+limit_left = -740
+limit_top = 0
+limit_right = 960
+limit_bottom = 0
+position_smoothing_enabled = true

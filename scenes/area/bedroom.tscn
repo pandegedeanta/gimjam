@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://chypsekmc632t"]
+[gd_scene load_steps=17 format=3 uid="uid://chypsekmc632t"]
 
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="1_bx5pa"]
 [ext_resource type="Texture2D" uid="uid://naecw05gu28y" path="res://assets/background/bedroom.png" id="1_uxcuu"]
 [ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="2_0grwd"]
-[ext_resource type="Texture2D" uid="uid://dyxi87bcmx2cn" path="res://assets/character/mother.png" id="3_fxsp2"]
 [ext_resource type="Texture2D" uid="uid://cdr13pucf72h1" path="res://assets/interior/bedroom.png" id="3_uxcuu"]
 [ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/door.gd" id="4_a8uiq"]
 [ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
@@ -152,11 +151,6 @@ scale = Vector2(0.16, 0.16)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(3072, 4096, 1024, 1024)
-
-[node name="Mother" type="Sprite2D" parent="World/Interior"]
-position = Vector2(1384, 464)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_fxsp2")
 
 [node name="Lamp" type="Sprite2D" parent="World/Interior"]
 position = Vector2(310, 185)
