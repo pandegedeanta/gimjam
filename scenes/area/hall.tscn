@@ -1,14 +1,51 @@
 [gd_scene format=3 uid="uid://jy82l7mg8hxm"]
 
-[node name="Hall" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://ce3lgf63pp3xk" path="res://assets/background/hall.png" id="1_p5um2"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x40yp"]
+size = Vector2(2922, 8)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc2fy"]
+size = Vector2(10, 864)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5um2"]
+size = Vector2(305, 208)
+
+[node name="Hall" type="Node2D" unique_id=218550748]
+
+[node name="World" type="Node2D" parent="." unique_id=1959272853]
+
+[node name="Background" type="Sprite2D" parent="World" unique_id=266188702]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_p5um2")
+
+[node name="World_Boundaries" type="Node2D" parent="World" unique_id=216076657]
+
+[node name="Floor" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1441349335]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor" unique_id=1850268867]
+position = Vector2(-920, -111)
+shape = SubResource("RectangleShape2D_x40yp")
+
+[node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1903369548]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left" unique_id=1324043187]
+position = Vector2(-1792, -361)
+shape = SubResource("RectangleShape2D_tc2fy")
+
+[node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries" unique_id=262362278]
+position = Vector2(640, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right" unique_id=2140920232]
+position = Vector2(512, -360)
+shape = SubResource("RectangleShape2D_tc2fy")
+
+[node name="Interactables" type="Node2D" parent="." unique_id=433170372]
+
+[node name="Stairs" type="Area2D" parent="Interactables" unique_id=1499222742]
+position = Vector2(1000.5, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Stairs" unique_id=1053730640]
+shape = SubResource("RectangleShape2D_p5um2")
