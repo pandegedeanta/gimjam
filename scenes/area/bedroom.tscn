@@ -1,13 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://chypsekmc632t"]
+[gd_scene load_steps=18 format=3 uid="uid://chypsekmc632t"]
 
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="1_bx5pa"]
 [ext_resource type="Texture2D" uid="uid://naecw05gu28y" path="res://assets/background/bedroom.png" id="1_uxcuu"]
 [ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="2_0grwd"]
+[ext_resource type="Texture2D" uid="uid://dyxi87bcmx2cn" path="res://assets/character/mother.png" id="3_fxsp2"]
 [ext_resource type="Texture2D" uid="uid://cdr13pucf72h1" path="res://assets/interior/bedroom.png" id="3_uxcuu"]
 [ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/door.gd" id="4_a8uiq"]
 [ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
 [ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="6_a8uiq"]
 [ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="8_genkd"]
+[ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="10_obu57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(2922, 8)
@@ -19,10 +21,10 @@ size = Vector2(10, 864)
 size = Vector2(4.4285927, 45.42859)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8uiq"]
-size = Vector2(14.000002, 22.285713)
+size = Vector2(296.42862, 442.8572)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_genkd"]
-size = Vector2(16.000006, 18.28572)
+size = Vector2(312.78207, 360.90216)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lauwj"]
 atlas = ExtResource("3_uxcuu")
@@ -44,77 +46,137 @@ position = Vector2(640, 360)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_uxcuu")
 
+[node name="Window" type="Sprite2D" parent="World/Background"]
+position = Vector2(1080, 302)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(4092, 0, 1024, 1024)
+
 [node name="World_Boundaries" type="Node2D" parent="World"]
+position = Vector2(0, -40)
 
 [node name="Floor" type="StaticBody2D" parent="World/World_Boundaries"]
 position = Vector2(640, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor"]
-position = Vector2(475, 208)
+position = Vector2(480, 248)
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries"]
 position = Vector2(640, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left"]
-position = Vector2(-640, 8)
+position = Vector2(-715, 8)
 shape = SubResource("RectangleShape2D_uxcuu")
 
 [node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries"]
 position = Vector2(640, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right"]
-position = Vector2(704, 0)
+position = Vector2(788, 8)
 shape = SubResource("RectangleShape2D_uxcuu")
 
 [node name="Interior" type="Node2D" parent="World"]
+position = Vector2(0, -40)
 
 [node name="Bed" type="Sprite2D" parent="World/Interior"]
-position = Vector2(186.99997, 485)
-scale = Vector2(0.35, 0.35)
+position = Vector2(80, 539.9999)
+scale = Vector2(0.28, 0.28)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(-24.769043, 245.51184, 1070.6296, 555.9922)
 
 [node name="Wardobe" type="Sprite2D" parent="World/Interior"]
-position = Vector2(520, 417)
-scale = Vector2(0.35, 0.35)
+position = Vector2(359, 465)
+scale = Vector2(0.33, 0.33)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(5353.444, 38.941666, 545.8833, 935.078)
 
 [node name="Table" type="Sprite2D" parent="World/Interior"]
-position = Vector2(984, 499)
-scale = Vector2(0.35, 0.35)
+position = Vector2(1083.3225, 542.4)
+scale = Vector2(0.35327512, 0.3323078)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(68.53284, 2304.0042, 887.2916, 520.9785)
 
 [node name="Book" type="Sprite2D" parent="World/Interior"]
-position = Vector2(1032, 404)
-scale = Vector2(0.35, 0.35)
+position = Vector2(958, 583)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(2302.832, 1297.4175, 577.96045, 455.8562)
 
 [node name="Desk_Lamp" type="Sprite2D" parent="World/Interior"]
-position = Vector2(1059, 393)
-scale = Vector2(0.35, 0.35)
+position = Vector2(1130, 439)
+scale = Vector2(0.36, 0.36)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(1328.5533, 181.48668, 404.35828, 444.7942)
 
 [node name="Vase" type="Sprite2D" parent="World/Interior"]
-position = Vector2(910, 395)
-scale = Vector2(0.35, 0.35)
+position = Vector2(1143, 465.00012)
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("3_uxcuu")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 1024, 1024, 1024)
+
+[node name="BookG" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1015, 474)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_uxcuu")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(4096, 1024, 1024, 1024)
+
+[node name="BookO" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1009, 466)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_uxcuu")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(3072, 1024, 1024, 1024)
+
+[node name="OpenedBook" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1038.0005, 472)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
-region_rect = Rect2(1311.8455, 1300.1636, 439.74, 490.2848)
+region_rect = Rect2(5112, 1024, 1024, 1024)
+
+[node name="candle" type="Sprite2D" parent="World/Interior"]
+position = Vector2(968, 457)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(3072, 4096, 1024, 1024)
+
+[node name="Mother" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1384, 464)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_fxsp2")
+
+[node name="Lamp" type="Sprite2D" parent="World/Interior"]
+position = Vector2(310, 185)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Lamp2" type="Sprite2D" parent="World/Interior"]
+position = Vector2(1109, 185)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_uxcuu")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
 
 [node name="Interactables" type="Node2D" parent="."]
+position = Vector2(0, -40)
 
 [node name="Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
-position = Vector2(690, 48)
+position = Vector2(766.00006, 87)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("4_a8uiq")
 ui_node = NodePath("../../UI")
@@ -132,7 +194,7 @@ scale = Vector2(19.999994, 19.999994)
 shape = SubResource("RectangleShape2D_fxsp2")
 
 [node name="Painting" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
-position = Vector2(91, -48)
+position = Vector2(-48.999985, 15.999992)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("5_lauwj")
 ui_node = NodePath("../../UI")
@@ -144,17 +206,18 @@ overlay_rect = Rect2(1024, 3072, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Painting"]
 position = Vector2(19.999985, 77.14285)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(0, 3072, 1024, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Painting"]
-position = Vector2(14.285714, 68.57141)
-scale = Vector2(19.999994, 19.999994)
+position = Vector2(12.857094, 71.42856)
+scale = Vector2(0.7999999, 0.7999999)
 shape = SubResource("RectangleShape2D_a8uiq")
 
 [node name="Drawer" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
-position = Vector2(91, 144)
+position = Vector2(134, 186.99997)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("5_lauwj")
 ui_node = NodePath("../../UI")
@@ -168,28 +231,73 @@ overlay_rect = Rect2(5120, 3072, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Drawer"]
 position = Vector2(20.000015, -2.8571472)
+scale = Vector2(0.95, 0.95)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(2048, 3072, 1024, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Drawer"]
-position = Vector2(11.428589, -5.7142944)
-scale = Vector2(19.999994, 19.999994)
+position = Vector2(11.428589, -6.1035156e-05)
+scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_genkd")
 
 [node name="Player" parent="." instance=ExtResource("1_bx5pa")]
-position = Vector2(-456, 204)
-scale = Vector2(0.3, 0.3)
+position = Vector2(-447, 205)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("2_0grwd")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -1039.9999)
 scale = Vector2(4.9999995, 4.9999995)
-limit_left = -640
+limit_left = -708
 limit_top = 0
-limit_right = 704
+limit_right = 782
 limit_bottom = 0
 position_smoothing_enabled = true
+
+[node name="Shadow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -640.0
+offset_top = -376.0
+offset_right = -600.0
+offset_bottom = -336.0
+mouse_filter = 2
+
+[node name="Dark" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = -192.0
+offset_top = -120.0
+offset_right = 1464.0
+offset_bottom = 856.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.32941177)
+
+[node name="LampLight" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 161.0
+offset_right = 1142.0
+offset_bottom = 857.00006
+rotation = 0.7853982
+mouse_filter = 2
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="LampLight2" type="ColorRect" parent="Shadow"]
+layout_mode = 0
+offset_left = 1109.0
+offset_top = 161.0
+offset_right = 1941.0
+offset_bottom = 857.00006
+rotation = 0.7853982
+mouse_filter = 2
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="Border" type="Node2D" parent="."]
+
+[node name="BackgroundWithNoWallpapper" type="Sprite2D" parent="Border"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_obu57")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
