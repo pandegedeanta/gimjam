@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://chypsekmc632t"]
+[gd_scene load_steps=16 format=3 uid="uid://chypsekmc632t"]
 
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="1_bx5pa"]
 [ext_resource type="Texture2D" uid="uid://naecw05gu28y" path="res://assets/background/bedroom.png" id="1_uxcuu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/door.gd" id="4_a8uiq"]
 [ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
 [ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="6_a8uiq"]
+[ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="8_genkd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(2922, 8)
@@ -26,6 +27,10 @@ size = Vector2(16.000006, 18.28572)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lauwj"]
 atlas = ExtResource("3_uxcuu")
 region = Rect2(1024, 3076, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_genkd"]
+atlas = ExtResource("3_uxcuu")
+region = Rect2(0, 4096, 1024, 1024)
 
 [node name="Bedroom" type="Node2D"]
 
@@ -108,44 +113,43 @@ region_rect = Rect2(1311.8455, 1300.1636, 439.74, 490.2848)
 
 [node name="Interactables" type="Node2D" parent="."]
 
-[node name="Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("sprite", "laci")]
+[node name="Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+position = Vector2(690, 48)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("4_a8uiq")
+ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
-laci = NodePath("../Drawer")
-koordinat_tutup = Rect2(2048, 2048, 1024, 1024)
 koordinat_buka = Rect2(3072, 2048, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Door"]
-position = Vector2(1969.1436, 137.71423)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(2048, 2048, 1024, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Door"]
-position = Vector2(1984.8572, 137.7142)
+position = Vector2(17.142944, 0)
 scale = Vector2(19.999994, 19.999994)
 shape = SubResource("RectangleShape2D_fxsp2")
 
 [node name="Painting" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
-position = Vector2(91, 144)
+position = Vector2(91, -48)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("5_lauwj")
 ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
-overlay_rect = Rect2(1024, 3072, 1024, 1024)
 region_closed = Rect2(0, 3072, 1024, 1024)
 region_open_full = Rect2(4096, 2048, 1024, 1024)
 region_open_empty = Rect2(5120, 2048, 1024, 1024)
+overlay_rect = Rect2(1024, 3072, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Painting"]
-position = Vector2(17.142975, -445.7141)
+position = Vector2(19.999985, 77.14285)
 texture = ExtResource("3_uxcuu")
 region_enabled = true
 region_rect = Rect2(0, 3072, 1024, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Painting"]
-position = Vector2(8.571472, -454.28558)
+position = Vector2(14.285714, 68.57141)
 scale = Vector2(19.999994, 19.999994)
 shape = SubResource("RectangleShape2D_a8uiq")
 
@@ -155,12 +159,12 @@ scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("5_lauwj")
 ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
-overlay_rect = Rect2(5120, 3072, 1024, 1024)
 is_locked = true
 correct_code = "6767"
 region_closed = Rect2(2048, 3072, 1024, 1024)
 region_open_full = Rect2(4096, 3072, 1024, 1024)
 region_open_empty = Rect2(3072, 3072, 1024, 1024)
+overlay_rect = Rect2(5120, 3072, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Drawer"]
 position = Vector2(20.000015, -2.8571472)
@@ -190,6 +194,8 @@ position_smoothing_enabled = true
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("6_a8uiq")
+region_tutup = Rect2(0, 4096, 1024, 1024)
+region_buka = Rect2(1024, 4096, 1024, 1024)
 
 [node name="Dimmer" type="ColorRect" parent="UI"]
 anchors_preset = 15
@@ -197,28 +203,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="ItemDisplay" type="TextureRect" parent="UI"]
-custom_minimum_size = Vector2(315.8, 315.8)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -157.9
-offset_top = -157.9
-offset_right = 157.9
-offset_bottom = 157.9
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_lauwj")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="CodeInput" type="Control" parent="UI"]
+[node name="Layer_Overlay" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,51 +213,146 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="UI/CodeInput"]
-custom_minimum_size = Vector2(400, 150)
+[node name="ItemDisplay" type="TextureRect" parent="UI/Layer_Overlay"]
+custom_minimum_size = Vector2(315.8, 315.8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -157.90002
+offset_top = -157.90002
+offset_right = 157.90002
+offset_bottom = 157.90002
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+mouse_filter = 0
+texture = SubResource("AtlasTexture_lauwj")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="LineEdit" type="LineEdit" parent="UI/CodeInput/Background"]
+[node name="CodeInput" type="Control" parent="UI/Layer_Overlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 100
-placeholder_text = "####"
-alignment = 1
-max_length = 4
 
-[node name="EnterButton" type="Button" parent="UI/CodeInput/Background"]
+[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput"]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.90002
+offset_top = -157.90002
+offset_right = 157.90002
+offset_bottom = 157.90002
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_genkd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.00003
+offset_top = -5.899994
+offset_right = 95.99997
+offset_bottom = 58.100006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="LineEdit1" type="LineEdit" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 10
+max_length = 1
+
+[node name="LineEdit2" type="LineEdit" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 10
+max_length = 1
+
+[node name="LineEdit3" type="LineEdit" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 10
+max_length = 1
+
+[node name="LineEdit4" type="LineEdit" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 10
+max_length = 1
+
+[node name="StaticHint" type="Label" parent="UI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -29.0
-offset_top = -31.0
-offset_right = 29.0
+offset_left = -96.0
+offset_top = -128.0
+offset_right = 103.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "ENTER"
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 32
+text = "Klik untuk lanjut"
+
+[node name="GameMessage" type="Label" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 75.0
+offset_right = 20.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_genkd")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="InventoryBar" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -61.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ScreenFade" type="ColorRect" parent="UI"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="gui_input" from="UI/Dimmer" to="UI" method="_on_dimmer_gui_input"]
-[connection signal="gui_input" from="UI/ItemDisplay" to="UI" method="_on_item_display_gui_input"]
-[connection signal="text_submitted" from="UI/CodeInput/Background/LineEdit" to="UI" method="_on_enter_pressed"]
-[connection signal="pressed" from="UI/CodeInput/Background/EnterButton" to="UI" method="_on_enter_pressed"]
+[connection signal="gui_input" from="UI/Layer_Overlay/ItemDisplay" to="UI" method="_on_item_display_gui_input"]

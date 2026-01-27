@@ -3,7 +3,12 @@ extends CharacterBody2D
 @export var speed := 300.0
 @onready var anim := $AnimatedSprite2D
 
+var is_transitioning := false # Saklar untuk mematikan kontrol
+
 func _physics_process(delta: float) -> void:
+	if is_transitioning:
+		return # Berhenti memproses input jika sedang transisi
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

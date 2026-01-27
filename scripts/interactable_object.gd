@@ -1,58 +1,52 @@
-class_name InteractableObject extends Area2D
+extends Area2D
 
-@export_group("References")
 @export var ui_node: CanvasLayer
 @export var sprite: Sprite2D
-
-@export_group("Overlay Settings")
-@export var overlay_rect: Rect2
-
-@export_group("Lock Settings")
 @export var is_locked: bool = false
 @export var correct_code: String = "1234"
+@export var interaction_dist: float = 128.0 
 
-@export_group("Sprite Regions")
+@export_group("Regions")
 @export var region_closed: Rect2
 @export var region_open_full: Rect2
 @export var region_open_empty: Rect2
-
-@export var interaction_dist: float = 150.0
+@export var overlay_rect: Rect2
 
 enum State { CLOSED, OPEN_FULL, OPEN_EMPTY }
 var current_state = State.CLOSED
 var item_taken = false
 
 func _ready():
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 	update_visual()
 
+func _on_mouse_entered():
+	sprite.modulate = Color(1.2, 1.2, 1.2)
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_mouse_exited():
+	sprite.modulate = Color(1, 1, 1)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
 func _input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed:
 		var player = get_tree().current_scene.find_child("Player", true, false)
-		var can_interact = true
-		
 		if player:
-			var dist_x = abs(global_position.x - player.global_position.x)
-			can_interact = dist_x <= interaction_dist
-		
-		if can_interact:
-			handle_click()
-		else:
-			print("Benda: Kamu terlalu jauh untuk menjangkau ini.")
+			var dist = abs(global_position.x - player.global_position.x)
+			if dist <= interaction_dist:
+				handle_click()
+			else:
+				ui_node.show_message("Terlalu jauh untuk menjangkau ini.", Color.LIGHT_GRAY)
 
 func handle_click():
 	if current_state == State.CLOSED:
 		if is_locked:
-			ui_node.show_code_input()
-			# Menunggu sinyal dari UI
-			var input = await ui_node.code_entered
-			print("Laci: Menerima input '", input, "'. Kode benar: '", correct_code, "'")
-			
-			if str(input) == str(correct_code):
+			ui_node.show_gembok(correct_code)
+			await ui_node.overlay_closed
+			if ui_node.is_unlocked:
 				is_locked = false
 				current_state = State.OPEN_FULL
-				print("Laci: KODE BENAR!")
-			else:
-				print("Laci: KODE SALAH!")
 		else:
 			current_state = State.OPEN_EMPTY if item_taken else State.OPEN_FULL
 	
@@ -62,11 +56,17 @@ func handle_click():
 		atlas.region = overlay_rect
 		ui_node.show_item(atlas)
 		
+		await ui_node.overlay_closed
+		
+		# Logika Deteksi Node "Drawer"
+		var nama_item = "Kertas"
+		if "Drawer" in name or "drawer" in name: 
+			nama_item = "Kunci Kamar"
+		
+		ui_node.add_to_inventory(nama_item, sprite.texture, overlay_rect)
 		item_taken = true
 		current_state = State.OPEN_EMPTY
-		# Update gambar sebelum await supaya barang langsung hilang di background
-		update_visual()
-		await ui_node.overlay_closed
+		print("DEBUG: " + nama_item + " diambil!")
 		
 	elif current_state == State.OPEN_EMPTY:
 		current_state = State.CLOSED
