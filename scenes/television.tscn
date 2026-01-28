@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw5i2hutuh05f"]
+[gd_scene format=3 uid="uid://cw5i2hutuh05f"]
 
 [ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="1_ccm7p"]
 
@@ -30,6 +30,14 @@ region = Rect2(1536, 512, 512, 512)
 atlas = ExtResource("1_ccm7p")
 region = Rect2(2048, 512, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccm7p"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l3id"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 512, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4l3id"]
 animations = [{
 "frames": [{
@@ -53,14 +61,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sexrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccm7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l3id")
 }],
 "loop": true,
 "name": &"default",
 "speed": 4.0
 }]
 
-[node name="television" type="Node2D"]
+[node name="television" type="Node2D" unique_id=273317270]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=275323881]
 sprite_frames = SubResource("SpriteFrames_4l3id")
-frame_progress = 0.92288476
+frame_progress = 0.7193444

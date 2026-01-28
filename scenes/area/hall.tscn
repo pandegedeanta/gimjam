@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://jy82l7mg8hxm"]
+[gd_scene format=3 uid="uid://jy82l7mg8hxm"]
 
 [ext_resource type="Texture2D" uid="uid://ce3lgf63pp3xk" path="res://assets/background/hall.png" id="1_p5um2"]
 [ext_resource type="Texture2D" uid="uid://ddfd8yfghv8n7" path="res://assets/interior/hall.png" id="2_tc2fy"]
 [ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="3_1imld"]
-[ext_resource type="Texture2D" uid="uid://cdr13pucf72h1" path="res://assets/interior/bedroom.png" id="4_1imld"]
+[ext_resource type="Texture2D" uid="uid://umck328p3bad" path="res://assets/interior/bedroom.png" id="4_1imld"]
 [ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="5_7hk8q"]
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="6_eg0f6"]
-[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="7_a30p6"]
+[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player/player.gd" id="7_a30p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x40yp"]
 size = Vector2(2922, 8)
