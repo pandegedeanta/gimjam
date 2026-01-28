@@ -9,12 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://umck328p3bad" path="res://assets/interior/bedroom.png" id="5_6obgk"]
 [ext_resource type="Texture2D" uid="uid://ddfd8yfghv8n7" path="res://assets/interior/hall.png" id="5_jch7y"]
 [ext_resource type="Texture2D" uid="uid://fi718y34p2tk" path="res://assets/interior/KURSI.png" id="8_hlsx5"]
+[ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="10_efgbj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rq7yt"]
 load_path = "res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hlsx5"]
 load_path = "res://.godot/imported/livingroom.png-f8d47f5808f7169ac93e5e610e30900f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50g85"]
+load_path = "res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
 
 [node name="Livingroom" type="Node2D" unique_id=1431313751]
 
@@ -143,3 +147,46 @@ scale = Vector2(0.6875001, 0.694336)
 texture = SubResource("CompressedTexture2D_hlsx5")
 region_enabled = true
 region_rect = Rect2(1024, 0, 512, 512)
+
+[node name="Lamp2" type="Sprite2D" parent="Intterior" unique_id=199542893]
+position = Vector2(-3021, -839)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CompressedTexture2D_50g85")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Light_Settings" type="Control" parent="." unique_id=956548333]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 922.3238
+offset_top = -557.4205
+offset_right = 962.3238
+offset_bottom = -517.4205
+mouse_filter = 2
+
+[node name="Dark" type="ColorRect" parent="Light_Settings" unique_id=442293861]
+layout_mode = 0
+offset_left = -3387.3237
+offset_top = 98.42047
+offset_right = 323.67627
+offset_bottom = 1074.4204
+mouse_filter = 2
+color = Color(0, 0, 0, 0.32941177)
+
+[node name="Livingroom" type="ColorRect" parent="Light_Settings" unique_id=1802118843]
+layout_mode = 0
+offset_left = -2191.3237
+offset_top = 337.42078
+offset_right = -1359.3237
+offset_bottom = 1033.4204
+rotation = 0.7853982
+mouse_filter = 2
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="Border" type="Node2D" parent="." unique_id=1936441179]
+position = Vector2(922.3238, -557.4205)
+
+[node name="BackgroundWithNoWallpapper" type="Sprite2D" parent="Border" unique_id=871192537]
+position = Vector2(-1518.0737, 557.4204)
+scale = Vector2(0.46321616, 0.25)
+texture = ExtResource("10_efgbj")
