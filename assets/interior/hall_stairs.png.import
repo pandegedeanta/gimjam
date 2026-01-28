@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://umck328p3bad"
-path="res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
+uid="uid://2jj5afw7n5dc"
+path="res://.godot/imported/hall_stairs.png-9361c53554387e4abe65ce86ddb0e94f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interior/bedroom.png"
-dest_files=["res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"]
+source_file="res://assets/interior/hall_stairs.png"
+dest_files=["res://.godot/imported/hall_stairs.png-9361c53554387e4abe65ce86ddb0e94f.ctex"]
 
 [params]
 
