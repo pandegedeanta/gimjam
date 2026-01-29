@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cpujnpm0a3fmr" path="res://assets/interior/hammer.png" id="13_psa84"]
 [ext_resource type="Script" uid="uid://bffvriehow0a3" path="res://scripts/interior/basement_door.gd" id="15_6ku8h"]
 [ext_resource type="PackedScene" uid="uid://ci1vqq2ckt0wk" path="res://scenes/ui.tscn" id="15_o4bf2"]
+[ext_resource type="Texture2D" uid="uid://daf34otpto06a" path="res://assets/interior/Window.png" id="18_tbiue"]
+[ext_resource type="Texture2D" uid="uid://d2nwbiec2itsx" path="res://assets/interior/wood.png" id="19_8odjr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtf0m"]
 size = Vector2(3356, 8)
@@ -91,7 +93,7 @@ shape = SubResource("RectangleShape2D_o4bf2")
 position = Vector2(640, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right" unique_id=172085146]
-position = Vector2(1843.0005, 40.000065)
+position = Vector2(2087.0005, 32.000065)
 shape = SubResource("RectangleShape2D_o4bf2")
 
 [node name="Wall_Mid" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1355713692]
@@ -198,24 +200,45 @@ region_enabled = true
 region_rect = Rect2(0, 1024, 1024, 1024)
 
 [node name="Refrigerator" type="Sprite2D" parent="World/Interior" unique_id=573087861]
-position = Vector2(-2320, -514)
+position = Vector2(-2249, -514)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(0, 0, 320, 320)
 
 [node name="Stove" type="Sprite2D" parent="World/Interior" unique_id=1887419498]
-position = Vector2(-1736.0001, -474)
+position = Vector2(-1560.0001, -475)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(320, 0, 320, 320)
 
-[node name="Cooker_Hood" type="Sprite2D" parent="World/Interior" unique_id=1540897305]
-position = Vector2(-1736, -747)
-scale = Vector2(1.3, 1.3)
+[node name="Cooker_Hood" type="Sprite2D" parent="World/Interior/Stove" unique_id=1540897305]
+position = Vector2(8.106232e-05, -182)
+scale = Vector2(0.8666667, 0.8666667)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(640, 960, 320, 320)
+
+[node name="Pan" type="Sprite2D" parent="World/Interior/Stove" unique_id=1110391218]
+position = Vector2(37.333336, -60)
+scale = Vector2(0.8666667, 0.8666667)
+texture = ExtResource("3_rq7yt")
+region_enabled = true
+region_rect = Rect2(960, 0, 320, 320)
+
+[node name="Spoon1" type="Sprite2D" parent="World/Interior/Stove" unique_id=923837608]
+position = Vector2(-59.33326, -136)
+scale = Vector2(0.74370134, 0.8557124)
+texture = ExtResource("3_rq7yt")
+region_enabled = true
+region_rect = Rect2(0, 320, 320, 320)
+
+[node name="Spoon2" type="Sprite2D" parent="World/Interior/Stove" unique_id=2118500066]
+position = Vector2(-78.666595, -139.33334)
+scale = Vector2(0.5222038, 0.5213989)
+texture = ExtResource("3_rq7yt")
+region_enabled = true
+region_rect = Rect2(0, 640, 320, 320)
 
 [node name="Chair" type="Sprite2D" parent="World/Interior" unique_id=1245735374]
 position = Vector2(-2832.0005, -482.00012)
@@ -251,13 +274,6 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(640, 0, 320, 320)
-
-[node name="Pan" type="Sprite2D" parent="World/Interior" unique_id=1110391218]
-position = Vector2(-1680.0001, -564)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("3_rq7yt")
-region_enabled = true
-region_rect = Rect2(960, 0, 320, 320)
 
 [node name="Plate1" type="Sprite2D" parent="World/Interior" unique_id=374708562]
 position = Vector2(-2112, -549)
@@ -372,6 +388,7 @@ texture = ExtResource("13_psa84")
 region_rect = Rect2(320, 320, 320, 320)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Hammer" unique_id=1886855307]
+position = Vector2(4, -1)
 rotation = -0.34557518
 shape = SubResource("CapsuleShape2D_6ku8h")
 
@@ -428,66 +445,75 @@ position_smoothing_enabled = true
 [node name="Interior" type="Node2D" parent="Front_Player" unique_id=1601767028]
 
 [node name="Bottle1" type="Sprite2D" parent="Front_Player/Interior" unique_id=536886444]
-position = Vector2(-237.00002, 86)
+position = Vector2(-162, 85)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(640, 640, 320, 320)
 
 [node name="Bottle2" type="Sprite2D" parent="Front_Player/Interior" unique_id=1096111770]
-position = Vector2(-209.00002, 99)
+position = Vector2(-152, 107)
+rotation = 1.5707964
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(320, 960, 320, 320)
 
 [node name="Match" type="Sprite2D" parent="Front_Player/Interior" unique_id=921196000]
-position = Vector2(-202.00002, 112)
+position = Vector2(-443, 18)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(0, 960, 320, 320)
 
-[node name="Spoon1" type="Sprite2D" parent="Front_Player/Interior" unique_id=923837608]
-position = Vector2(-121.00001, 64.99997)
-rotation = -2.9304078
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_rq7yt")
-region_enabled = true
-region_rect = Rect2(0, 320, 320, 320)
-
-[node name="Spoon2" type="Sprite2D" parent="Front_Player/Interior" unique_id=2118500066]
-position = Vector2(-157, 66.99999)
-rotation = -3.5116024
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_rq7yt")
-region_enabled = true
-region_rect = Rect2(0, 640, 320, 320)
-
 [node name="Ingredients1" type="Sprite2D" parent="Front_Player/Interior" unique_id=425988449]
-position = Vector2(-64.00001, 98)
+position = Vector2(-8, 169)
+scale = Vector2(1.103125, 1.05625)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(320, 640, 320, 320)
 
 [node name="Ingredients2" type="Sprite2D" parent="Front_Player/Interior" unique_id=223029636]
-position = Vector2(-295.00006, 212)
-rotation = 0.47822022
+position = Vector2(-56.000004, 107)
+rotation = -5.6897736
+scale = Vector2(0.8625, 0.857)
+texture = ExtResource("3_rq7yt")
+region_enabled = true
+region_rect = Rect2(960, 640, 320, 320)
+
+[node name="Ingredients3" type="Sprite2D" parent="Front_Player/Interior" unique_id=1714830134]
+position = Vector2(-72.00001, 100)
+rotation = -6.2831855
+scale = Vector2(0.8625, 0.857)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(960, 640, 320, 320)
 
 [node name="Kitchen_Utilities_Container" type="Sprite2D" parent="Front_Player/Interior" unique_id=1017496957]
-position = Vector2(-136, 96)
+position = Vector2(-75.99999, 163)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(960, 320, 320, 320)
 
 [node name="Kitchen_Table" type="Sprite2D" parent="Front_Player/Interior" unique_id=360646235]
-position = Vector2(-151, 162)
+position = Vector2(-81, 160)
 texture = ExtResource("3_rq7yt")
 region_enabled = true
 region_rect = Rect2(640, 320, 320, 320)
+
+[node name="Broken Window" type="Sprite2D" parent="Front_Player/Interior" unique_id=480349868]
+position = Vector2(-266, -81)
+scale = Vector2(3.5649996, 4)
+texture = ExtResource("18_tbiue")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 50)
+
+[node name="Wood" type="Sprite2D" parent="Front_Player/Interior/Broken Window" unique_id=249138351]
+position = Vector2(5.1020393, 5.8928585)
+scale = Vector2(0.12444696, 0.096592486)
+texture = ExtResource("19_8odjr")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
 
 [node name="Light_Settings" type="Control" parent="." unique_id=956548333]
 layout_mode = 3
