@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="5_a0jdd"]
 [ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
 [ext_resource type="Script" uid="uid://r3txul8qx1d2" path="res://scripts/parents_door.gd" id="8_a0jdd"]
+[ext_resource type="Texture2D" uid="uid://d2nwbiec2itsx" path="res://assets/interior/wood.png" id="8_lifvk"]
 [ext_resource type="Texture2D" uid="uid://2jj5afw7n5dc" path="res://assets/interior/hall_stairs.png" id="9_3oo7m"]
 [ext_resource type="Script" uid="uid://cdvi6vhyh6x8j" path="res://scripts/stairs.gd" id="9_lifvk"]
 [ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="10_obu57"]
@@ -33,7 +34,7 @@ size = Vector2(296.42862, 442.8572)
 size = Vector2(312.78207, 360.90216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w76b8"]
-size = Vector2(416, 895)
+size = Vector2(594.28577, 895)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0jdd"]
 size = Vector2(256, 176)
@@ -92,7 +93,7 @@ shape = SubResource("RectangleShape2D_uxcuu")
 
 [node name="Wall_Mid" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1109529344]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Mid" unique_id=286709844]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Mid" unique_id=286709844]
 position = Vector2(1411.625, 400)
 shape = SubResource("RectangleShape2D_uxcuu")
 
@@ -337,11 +338,12 @@ position = Vector2(11.428589, -6.1035156e-05)
 scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_genkd")
 
-[node name="Parents_Door" type="Area2D" parent="Interactables" unique_id=1876004028 node_paths=PackedStringArray("ui_node", "sprite", "wall_collision")]
+[node name="Parents_Door" type="Area2D" parent="Interactables" unique_id=1876004028 node_paths=PackedStringArray("ui_node", "sprite", "wood_sprite", "wall_collision")]
 position = Vector2(1263, 88)
 script = ExtResource("8_a0jdd")
 ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
+wood_sprite = NodePath("Wood")
 wall_collision = NodePath("../../World/World_Boundaries/Wall_Mid")
 koordinat_buka = Rect2(1024, 0, 1024, 1024)
 koordinat_tutup = Rect2(0, 0, 1024, 1024)
@@ -352,7 +354,12 @@ texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 1024)
 
+[node name="Wood" type="Sprite2D" parent="Interactables/Parents_Door" unique_id=1470042979]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_lifvk")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Parents_Door" unique_id=1445094861]
+position = Vector2(1, 0)
 scale = Vector2(0.35, 0.35)
 shape = SubResource("RectangleShape2D_w76b8")
 
@@ -511,6 +518,7 @@ offset_right = 772.0
 offset_bottom = 376.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.78431374)
+metadata/_edit_use_anchors_ = true
 
 [node name="Hall_Darkener" type="ColorRect" parent="Darkener" unique_id=1264468466]
 offset_left = 768.0
@@ -519,5 +527,6 @@ offset_right = 2528.0
 offset_bottom = 376.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.78431374)
+metadata/_edit_use_anchors_ = true
 
 [node name="UI" parent="." unique_id=1470543014 instance=ExtResource("13_a0jdd")]

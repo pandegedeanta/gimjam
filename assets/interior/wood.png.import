@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fi718y34p2tk"
-path="res://.godot/imported/KURSI.png-ba045165c9817b0a8a6b9170cd84bc96.ctex"
+uid="uid://d2nwbiec2itsx"
+path="res://.godot/imported/wood.png-73dae3535c6c973917fbf49356a3da3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interior/KURSI.png"
-dest_files=["res://.godot/imported/KURSI.png-ba045165c9817b0a8a6b9170cd84bc96.ctex"]
+source_file="res://assets/interior/wood.png"
+dest_files=["res://.godot/imported/wood.png-73dae3535c6c973917fbf49356a3da3b.ctex"]
 
 [params]
 

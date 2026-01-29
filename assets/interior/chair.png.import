@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5n073wp7pmbj"
-path="res://.godot/imported/lukisan_keluarga.png-7ab643b4a4ee06e56d737d0c231f1b7d.ctex"
+uid="uid://fi718y34p2tk"
+path="res://.godot/imported/chair.png-f504e0f73bac1c38ee2514c31f2908c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interior/lukisan_keluarga.png"
-dest_files=["res://.godot/imported/lukisan_keluarga.png-7ab643b4a4ee06e56d737d0c231f1b7d.ctex"]
+source_file="res://assets/interior/chair.png"
+dest_files=["res://.godot/imported/chair.png-f504e0f73bac1c38ee2514c31f2908c4.ctex"]
 
 [params]
 

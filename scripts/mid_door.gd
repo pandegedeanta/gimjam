@@ -8,6 +8,11 @@ extends Area2D
 @export var koordinat_tutup: Rect2 
 @export var jarak_toleransi: float = 128.0
 
+@export_group("Door Settings")
+@export var terkunci_secara_default: bool = true # <--- FITUR BARU!
+@export var nama_kunci_pasangan: String = "Kunci Kamar"
+@export var pesan_terkunci: String = "Pintu Terkunci..."
+
 @export_group("Room Darkeners")
 @export var bedroom_darkener: ColorRect 
 @export var hall_darkener: ColorRect    
@@ -29,8 +34,15 @@ func _ready():
 	# 1. Muat State dari Global
 	var saved = Global.get_state(self.name)
 	if saved:
+		# Kalau sudah pernah disimpan, pakai data memory (apakah sudah dibuka player?)
 		sudah_di_unlock = saved.get("unlocked", false)
 		is_open = saved.get("is_open", false)
+	else:
+		# Kalau belum pernah disimpan (Game Baru), pakai settingan Inspector
+		# Jika 'terkunci_secara_default' dicentang (TRUE), maka 'sudah_di_unlock' = FALSE.
+		# Jika tidak dicentang (FALSE), maka 'sudah_di_unlock' = TRUE (langsung bisa dibuka).
+		sudah_di_unlock = not terkunci_secara_default
+		is_open = false # Default selalu tertutup di awal
 	
 	# 2. Sinkronkan Visual & Darkener Awal
 	if is_open:
@@ -73,22 +85,21 @@ func _input_event(_viewport, event, _shape_idx):
 		eksekusi_pintu(player)
 
 func eksekusi_pintu(player):
+	# LOGIKA UNLOCK
 	if not sudah_di_unlock:
-		# CEK KUNCI DI TANGAN
-		if ui_node.selected_item_name == "Kunci Kamar":
+		if ui_node.selected_item_name == nama_kunci_pasangan:
 			sudah_di_unlock = true
-			# HAPUS DARI TAS & GLOBAL
-			ui_node.remove_from_inventory("Kunci Kamar")
-			
+			ui_node.remove_from_inventory(nama_kunci_pasangan)
 			buka_pintu()
 			ui_node.show_message("Pintu Terbuka!", Color.AQUAMARINE)
 			_save_state()
 		elif ui_node.selected_item_name == "":
-			ui_node.show_message("Pintu Terkunci...", Color.CORAL)
+			ui_node.show_message(pesan_terkunci, Color.CORAL)
 		else:
 			ui_node.show_message("Kunci ini tidak cocok.", Color.CORAL)
 		return
 
+	# LOGIKA BUKA TUTUP (Bisa dijalankan langsung kalau sudah_di_unlock = true)
 	if is_open:
 		if player.global_position.x > door_x_min and player.global_position.x < door_x_max:
 			ui_node.show_message("Pintu terhalang badanmu!", Color.CORAL)
@@ -115,6 +126,7 @@ func tutup_pintu(player):
 	update_darkeners(player)
 
 func update_darkeners(player):
+	# PENTING: Tambahkan pengecekan 'if' agar tidak error jika slot darkener kosong
 	if is_open: return 
 	
 	if player.global_position.x <= (door_x_min + door_x_max) / 2:

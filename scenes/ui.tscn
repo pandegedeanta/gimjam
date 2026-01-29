@@ -83,10 +83,31 @@ offset_right = 157.90002
 offset_bottom = 157.90002
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_lauwj")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="TVContainer" type="SubViewportContainer" parent="Layer_Overlay" unique_id=313587431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Layer_Overlay/TVContainer" unique_id=1841638725]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+render_target_update_mode = 4
 
 [node name="CodeInput" type="Control" parent="Layer_Overlay" unique_id=777302302]
 layout_mode = 1

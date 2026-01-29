@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://1vgvvel2gwr4" path="res://assets/background/background_parents.png" id="3_m45qd"]
 [ext_resource type="Script" uid="uid://bwsbkgwlcqb78" path="res://scripts/Logic-Script-Parents/door.gd" id="3_nal78"]
 [ext_resource type="Texture2D" uid="uid://umck328p3bad" path="res://assets/interior/bedroom.png" id="3_wa058"]
-[ext_resource type="AudioStream" path="res://assets/sound/CLOCK SOUND.wav" id="4_hh1kk"]
+[ext_resource type="AudioStream" uid="uid://3uxgdole6tbr" path="res://assets/All-Sound/Sound-Parent-Room/CLOCK SOUND.wav" id="4_hh1kk"]
 [ext_resource type="Script" uid="uid://de4t14h56dcgg" path="res://scripts/Logic-Script-Parents/drawer.gd" id="4_ipscb"]
 [ext_resource type="Script" uid="uid://hlhjwh1m4an4" path="res://scripts/Logic-Script-Parents/wardrobe.gd" id="8_sqprf"]
 [ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="10_nk27n"]

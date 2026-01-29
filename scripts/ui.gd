@@ -13,6 +13,10 @@ signal overlay_closed
 @onready var inventory_bar = $InventoryBar
 @onready var screen_fade = $ScreenFade 
 
+# --- REFERENSI BUAT TV ---
+@onready var tv_container = $Layer_Overlay/TVContainer
+@onready var tv_viewport = $Layer_Overlay/TVContainer/SubViewport
+
 @export_group("Gembok Regions")
 @export var region_tutup: Rect2 
 @export var region_buka: Rect2
@@ -32,13 +36,36 @@ var selected_item_name: String = ""
 var last_selected_slot: TextureButton = null
 
 func _ready():
-	# Cek apakah Global beneran ada
 	if not get_node_or_null("/root/Global"):
-		push_error("Woi Pande! Global.gd belum dipasang di Autoload!")
+		push_error("Global.gd belum dipasang di Autoload!")
 		return
 
+	# --- BAGIAN PENTING (FIX CURSOR & MOUSE FILTER) ---
+	# Strategi: Bikin semua layer depan 'Tembus Pandang' (Ignore) terhadap mouse,
+	# kecuali tombol-tombol penting. Biar mouse selalu nembus ke Dimmer (Background).
+	
+	# 1. Dimmer: Wajib STOP agar menangkap mouse & Ubah cursor jadi Tangan
+	dimmer.mouse_filter = Control.MOUSE_FILTER_STOP
+	dimmer.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	
+	# 2. Layer Overlay (Wadah Utama): Wajib IGNORE agar mouse tembus ke Dimmer
+	layer_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	# 3. Konten Overlay (TV & Item): IGNORE juga, biar kalau hover TV tetap dianggap hover Dimmer
+	tv_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	item_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	# 4. Wadah Gembok (CodeInput): IGNORE biar background gembok tembus ke Dimmer
+	$Layer_Overlay/CodeInput.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	# 5. ScreenFade: Jangan halangi mouse
+	if screen_fade:
+		screen_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# Sembunyikan semua elemen overlay di awal
 	dimmer.hide()
 	layer_overlay.hide()
+	tv_container.hide() 
 	static_hint.modulate.a = 0
 	game_message.modulate.a = 0
 	
@@ -48,33 +75,25 @@ func _ready():
 	
 	setup_dial_system()
 	
-	# Tunggu sebentar sebelum muat inventory (biar Global stabil)
 	await get_tree().create_timer(0.1).timeout
 	_reload_inventory()
 	
 func _reload_inventory():
-	# Tunggu satu frame physics agar semua node anak (InventoryBar) sudah matang
 	await get_tree().physics_frame
-	
 	for child in inventory_bar.get_children():
 		child.queue_free()
 	inventory_items.clear()
-	
-	print("UI: Mengecek isi tas di Global... Isi: ", Global.inventory_data.size())
 	
 	for item in Global.inventory_data:
 		_create_slot_visual(item["name"], item["texture"], item["region"])
 		
 func add_to_inventory(item_name: String, item_tex: Texture, item_region: Rect2):
-	# Cek apakah sudah ada di visual lokal
 	if item_name in inventory_items: 
 		return
 	
-	# Simpan ke Global (Database) jika belum ada
 	var data = {"name": item_name, "texture": item_tex, "region": item_region}
 	Global.add_item(data)
 	
-	# Gambar visualnya
 	_create_slot_visual(item_name, item_tex, item_region)
 	print("UI: Visual Berhasil Dibuat untuk ", item_name)
 	
@@ -141,23 +160,49 @@ func deselect_item():
 	selected_item_name = ""
 	last_selected_slot = null
 
-# Ganti fungsi remove_from_inventory di ui.gd dengan ini:
 func remove_from_inventory(item_name: String):
 	if item_name == selected_item_name:
 		deselect_item()
 	
 	if item_name in inventory_items:
-		# 1. Hapus Visual
 		var slot = inventory_bar.get_node_or_null(item_name)
 		if slot: slot.queue_free()
 		inventory_items.erase(item_name)
 		
-		# 2. Hapus Database (PERBAIKAN DI SINI)
-		# Jangan pakai if "Global" in root, itu bikin kodenya ga jalan!
-		# Langsung tembak saja karena Global sudah pasti ada (Autoload).
+		# Langsung tembak Global (Auto-load pasti ada)
 		Global.remove_item(item_name) 
 		print("UI: Perintah hapus ", item_name, " dikirim ke Global.")
+
+# --- SISTEM TV OVERLAY (SUBVIEWPORT) ---
+func show_tv_overlay(original_tv_node: Node2D):
+	get_tree().paused = true
+	
+	dimmer.show()
+	layer_overlay.show()
+	$Layer_Overlay/CodeInput.hide()
+	item_display.hide()
+	
+	# Bersihkan sisa-sisa duplikat lama
+	for child in tv_viewport.get_children():
+		child.queue_free()
 		
+	# Tampilkan Container
+	tv_container.show()
+	
+	# DUPLIKASI TV
+	var tv_copy = original_tv_node.duplicate()
+	tv_copy.process_mode = Node.PROCESS_MODE_ALWAYS 
+	
+	tv_viewport.add_child(tv_copy)
+	tv_copy.position = tv_viewport.size / 2
+	tv_copy.scale = Vector2(1.0, 1.0) 
+	
+	var anim_in_copy = tv_copy.get_node_or_null("AnimatedSprite2D")
+	if anim_in_copy:
+		anim_in_copy.play()
+	
+	static_hint.modulate.a = 1.0
+
 # --- SISTEM GEMBOK ---
 func setup_dial_system():
 	if not hbox: return
@@ -181,7 +226,7 @@ func _on_dial_changed(digit_index: int, delta: int):
 	if is_unlocked: return
 	current_dial_values[digit_index] = clampi(current_dial_values[digit_index] + delta, 0, 9)
 	var val = current_dial_values[digit_index]
-	var col = val % columns          
+	var col = val % columns           
 	var row = int(val / columns)      
 	var display = hbox.get_child(digit_index).get_node("TextureRect")
 	display.texture.region.position.x = col * frame_width
@@ -211,11 +256,13 @@ func show_gembok(correct_code_str: String):
 	layer_overlay.show()
 	$Layer_Overlay/CodeInput.show()
 	item_display.hide()
+	tv_container.hide() 
 
 func show_item(tex: Texture):
 	dimmer.show()
 	layer_overlay.show()
 	$Layer_Overlay/CodeInput.hide()
+	tv_container.hide()
 	item_display.texture = tex
 	item_display.show()
 	static_hint.modulate.a = 1.0
@@ -234,7 +281,7 @@ func show_message(txt: String, color: Color = Color.WHITE):
 func _input(event):
 	if not dimmer.visible: return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if is_unlocked or item_display.visible:
+		if is_unlocked or item_display.visible or tv_container.visible:
 			hide_all()
 			overlay_closed.emit()
 		elif $Layer_Overlay/CodeInput.visible:
@@ -248,4 +295,10 @@ func hide_all():
 	dimmer.hide()
 	layer_overlay.hide()
 	static_hint.modulate.a = 0
+	
+	# Matikan dan bersihkan TV
+	tv_container.hide()
+	for child in tv_viewport.get_children():
+		child.queue_free()
+		
 	get_tree().paused = false
