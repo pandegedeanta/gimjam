@@ -90,6 +90,10 @@ func eksekusi_pintu(player):
 		if ui_node.selected_item_name == nama_kunci_pasangan:
 			sudah_di_unlock = true
 			ui_node.remove_from_inventory(nama_kunci_pasangan)
+			
+			play_key_sfx()   
+			await get_tree().create_timer(0.2).timeout
+			
 			buka_pintu()
 			ui_node.show_message("Terbuka!", Color.WHITE)
 			_save_state()
@@ -111,12 +115,25 @@ func eksekusi_pintu(player):
 
 func buka_pintu():
 	is_open = true
+	
+	if $AudioStreamPlayer:
+		$AudioStreamPlayer.play()
+		
 	update_visual_state()
 
 func tutup_pintu(player):
 	is_open = false
+	
+	if $AudioStreamPlayer:
+		$AudioStreamPlayer.play()
+	
 	update_visual_state()
 	update_darkeners(player)
+
+func play_key_sfx():
+	if $AudioStreamPlayer_Key:
+		$AudioStreamPlayer_Key.play()
+
 
 func update_darkeners(player):
 	if is_open: return 
