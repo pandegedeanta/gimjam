@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://15dcrow3q255"]
+
+[ext_resource type="Script" uid="uid://diba1a8xi8ixc" path="res://scripts/basement/brankas.gd" id="1_2c5us"]
+[ext_resource type="Texture2D" uid="uid://cdrsdot6fwqqw" path="res://assets/interior/Brankas__Mayat-3.png" id="2_2c5us"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5umc"]
+size = Vector2(102, 102)
+
+[node name="Brankas" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_2c5us")
+sprite = NodePath("Sprite2D")
+region_closed = Rect2(0, 0, 1024, 771)
+region_open_full = Rect2(1024, 0, 1024, 771)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("RectangleShape2D_t5umc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.28298396, 0.22000201)
+texture = ExtResource("2_2c5us")
+region_rect = Rect2(-0.14974976, -1.6998596, 3075.9785, 774.3125)
