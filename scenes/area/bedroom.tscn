@@ -1,20 +1,19 @@
-[gd_scene load_steps=34 format=3 uid="uid://chypsekmc632t"]
+[gd_scene format=3 uid="uid://chypsekmc632t"]
 
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="1_bx5pa"]
 [ext_resource type="Texture2D" uid="uid://naecw05gu28y" path="res://assets/background/bedroom.png" id="1_uxcuu"]
-[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player.gd" id="2_0grwd"]
 [ext_resource type="Texture2D" uid="uid://ce3lgf63pp3xk" path="res://assets/background/hall.png" id="2_obu57"]
 [ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/mid_door.gd" id="4_a8uiq"]
 [ext_resource type="Texture2D" uid="uid://ddfd8yfghv8n7" path="res://assets/interior/hall.png" id="4_w76b8"]
 [ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="5_a0jdd"]
 [ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_lauwj"]
-[ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="6_a8uiq"]
-[ext_resource type="Script" uid="uid://r3txul8qx1d2" path="res://scripts/Parents_Door.gd" id="8_a0jdd"]
-[ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="8_genkd"]
+[ext_resource type="Script" uid="uid://r3txul8qx1d2" path="res://scripts/parents_door.gd" id="8_a0jdd"]
+[ext_resource type="Texture2D" uid="uid://d2nwbiec2itsx" path="res://assets/interior/wood.png" id="8_lifvk"]
 [ext_resource type="Texture2D" uid="uid://2jj5afw7n5dc" path="res://assets/interior/hall_stairs.png" id="9_3oo7m"]
 [ext_resource type="Script" uid="uid://cdvi6vhyh6x8j" path="res://scripts/stairs.gd" id="9_lifvk"]
 [ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="10_obu57"]
-[ext_resource type="Texture2D" uid="uid://dvw0gl3kqe116" path="res://assets/others/button.png" id="14_0pu0a"]
+[ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player/player.gd" id="11_3oo7m"]
+[ext_resource type="PackedScene" uid="uid://ci1vqq2ckt0wk" path="res://scenes/ui.tscn" id="13_a0jdd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0jdd"]
 load_path = "res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
@@ -35,173 +34,136 @@ size = Vector2(296.42862, 442.8572)
 size = Vector2(312.78207, 360.90216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w76b8"]
-size = Vector2(416, 895)
+size = Vector2(594.28577, 895)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0jdd"]
 size = Vector2(256, 176)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lauwj"]
-atlas = SubResource("CompressedTexture2D_a0jdd")
-region = Rect2(1024, 3076, 1024, 1024)
+[node name="Bedroom" type="Node2D" unique_id=1082627813]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_genkd"]
-atlas = SubResource("CompressedTexture2D_a0jdd")
-region = Rect2(0, 4096, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3oo7m"]
-atlas = ExtResource("14_0pu0a")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0pu0a"]
-load_path = "res://.godot/imported/number.png-397eae437bfe1ecc178d6f37ede60e34.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyi55"]
-resource_local_to_scene = true
-atlas = SubResource("CompressedTexture2D_0pu0a")
-region = Rect2(0, 0, 372, 1024)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3oo7m"]
-load_path = "res://.godot/imported/button.png-0d7e16b15113293f152bbd2016c79d81.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_825tw"]
-atlas = SubResource("CompressedTexture2D_3oo7m")
-region = Rect2(0, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_beks7"]
-atlas = SubResource("CompressedTexture2D_3oo7m")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mr31s"]
-resource_local_to_scene = true
-atlas = SubResource("CompressedTexture2D_0pu0a")
-region = Rect2(0, 0, 372, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pr1pa"]
-atlas = SubResource("CompressedTexture2D_3oo7m")
-region = Rect2(0, 1024, 1024, 1024)
-
-[node name="Bedroom" type="Node2D"]
-
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=80386732]
 position = Vector2(-640, -360)
 
-[node name="Background" type="Node2D" parent="World"]
+[node name="Background" type="Node2D" parent="World" unique_id=1430672357]
 
-[node name="Background" type="Sprite2D" parent="World/Background"]
+[node name="Background" type="Sprite2D" parent="World/Background" unique_id=624384215]
 position = Vector2(632.0001, 360)
 scale = Vector2(0.24999999, 0.24999999)
 texture = ExtResource("1_uxcuu")
 region_enabled = true
 region_rect = Rect2(984.23755, 0, 6326.0166, 2880)
 
-[node name="Background2" type="Sprite2D" parent="World/Background"]
+[node name="Background2" type="Sprite2D" parent="World/Background" unique_id=1979248287]
 position = Vector2(2210.375, 360)
 scale = Vector2(0.24988143, 0.25)
 texture = ExtResource("2_obu57")
 region_enabled = true
 region_rect = Rect2(1376.8098, 0, 6318.4063, 2880)
 
-[node name="Window" type="Sprite2D" parent="World/Background"]
+[node name="Window" type="Sprite2D" parent="World/Background" unique_id=1014175627]
 position = Vector2(1080, 302)
 scale = Vector2(0.28, 0.28)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(4092, 0, 1024, 1024)
 
-[node name="World_Boundaries" type="Node2D" parent="World"]
+[node name="World_Boundaries" type="Node2D" parent="World" unique_id=1399543268]
 position = Vector2(0, -40)
 
-[node name="Floor" type="StaticBody2D" parent="World/World_Boundaries"]
+[node name="Floor" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1940140204]
 position = Vector2(640, 360)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Floor" unique_id=1511699594]
 position = Vector2(697, 248)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries"]
+[node name="Wall_Left" type="StaticBody2D" parent="World/World_Boundaries" unique_id=2075727917]
 position = Vector2(640, 360)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Left" unique_id=1956139338]
 position = Vector2(-715, 8)
 shape = SubResource("RectangleShape2D_uxcuu")
 
-[node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries"]
+[node name="Wall_Right" type="StaticBody2D" parent="World/World_Boundaries" unique_id=436426928]
 position = Vector2(640, 360)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Right" unique_id=1476009668]
 position = Vector2(2365, 39)
 shape = SubResource("RectangleShape2D_uxcuu")
 
-[node name="Wall_Mid" type="StaticBody2D" parent="World/World_Boundaries"]
+[node name="Wall_Mid" type="StaticBody2D" parent="World/World_Boundaries" unique_id=1109529344]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Mid"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World_Boundaries/Wall_Mid" unique_id=286709844]
 position = Vector2(1411.625, 400)
 shape = SubResource("RectangleShape2D_uxcuu")
 
-[node name="Interior" type="Node2D" parent="World"]
+[node name="Interior" type="Node2D" parent="World" unique_id=548657491]
 position = Vector2(0, -40)
 
-[node name="Room_Border" type="Node2D" parent="World/Interior"]
+[node name="Room_Border" type="Node2D" parent="World/Interior" unique_id=1639674641]
 
-[node name="Out" type="ColorRect" parent="World/Interior/Room_Border"]
+[node name="Out" type="ColorRect" parent="World/Interior/Room_Border" unique_id=1078031904]
 offset_left = 1400.75
 offset_top = 134.0
 offset_right = 1421.75
 offset_bottom = 296.0
 color = Color(0.4, 0.19607843, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="Mid" type="ColorRect" parent="World/Interior/Room_Border"]
+[node name="Mid" type="ColorRect" parent="World/Interior/Room_Border" unique_id=207254919]
 offset_left = 1403.0
 offset_top = 134.0
 offset_right = 1420.0
 offset_bottom = 291.0
 color = Color(0.2627451, 0.019607844, 0.019607844, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="In" type="ColorRect" parent="World/Interior/Room_Border"]
+[node name="In" type="ColorRect" parent="World/Interior/Room_Border" unique_id=305206403]
 offset_left = 1405.0
 offset_top = 134.0
 offset_right = 1418.0
 offset_bottom = 291.0
 color = Color(0.20784314, 0.12941177, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="BedRoom" type="Node2D" parent="World/Interior"]
+[node name="BedRoom" type="Node2D" parent="World/Interior" unique_id=1383206245]
 
-[node name="Bed" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Bed" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=1504365119]
 position = Vector2(80, 539.9999)
 scale = Vector2(0.28, 0.28)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(-24.769043, 245.51184, 1070.6296, 555.9922)
 
-[node name="Wardobe" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Wardobe" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=2086115334]
 position = Vector2(359, 465)
 scale = Vector2(0.33, 0.33)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(5353.444, 38.941666, 545.8833, 935.078)
 
-[node name="Table" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Table" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=1884920120]
 position = Vector2(1083.3225, 542.4)
 scale = Vector2(0.35327512, 0.3323078)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(68.53284, 2304.0042, 887.2916, 520.9785)
 
-[node name="Book" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Book" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=1605619246]
 position = Vector2(958, 583)
 scale = Vector2(0.3, 0.3)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(2302.832, 1297.4175, 577.96045, 455.8562)
 
-[node name="Desk_Lamp" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Desk_Lamp" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=37413879]
 position = Vector2(1130, 439)
 scale = Vector2(0.36, 0.36)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(1328.5533, 181.48668, 404.35828, 444.7942)
 
-[node name="Vase" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="Vase" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=175538605]
 position = Vector2(1143, 465.00012)
 scale = Vector2(0.27, 0.27)
 texture = SubResource("CompressedTexture2D_a0jdd")
@@ -209,7 +171,7 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(0, 1024, 1024, 1024)
 
-[node name="BookG" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="BookG" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=1232171483]
 position = Vector2(1015, 474)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_a0jdd")
@@ -217,7 +179,7 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(4096, 1024, 1024, 1024)
 
-[node name="BookO" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="BookO" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=546437538]
 position = Vector2(1009, 466)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_a0jdd")
@@ -225,111 +187,83 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(3072, 1024, 1024, 1024)
 
-[node name="OpenedBook" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="OpenedBook" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=388945753]
 position = Vector2(1038.0005, 472)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(5112, 1024, 1024, 1024)
 
-[node name="candle" type="Sprite2D" parent="World/Interior/BedRoom"]
+[node name="candle" type="Sprite2D" parent="World/Interior/BedRoom" unique_id=1050365463]
 position = Vector2(968, 457)
 scale = Vector2(0.16, 0.16)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(3072, 4096, 1024, 1024)
 
-[node name="Lamp" type="Sprite2D" parent="World/Interior/BedRoom"]
-position = Vector2(310, 185)
-scale = Vector2(0.3, 0.3)
-texture = SubResource("CompressedTexture2D_a0jdd")
-region_enabled = true
-region_rect = Rect2(3072, 5120, 1024, 1024)
-
-[node name="Lamp2" type="Sprite2D" parent="World/Interior/BedRoom"]
-position = Vector2(1109, 185)
-scale = Vector2(0.3, 0.3)
-texture = SubResource("CompressedTexture2D_a0jdd")
-region_enabled = true
-region_rect = Rect2(3072, 5120, 1024, 1024)
-
-[node name="Hall" type="Node2D" parent="World/Interior"]
+[node name="Hall" type="Node2D" parent="World/Interior" unique_id=2034921879]
 position = Vector2(2108, 400)
 
-[node name="Table_Lamp" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Table_Lamp" type="Sprite2D" parent="World/Interior/Hall" unique_id=1350441111]
 position = Vector2(534, 171)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(3072, 0, 1024, 1024)
 
-[node name="Hanging_Clothes" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Hanging_Clothes" type="Sprite2D" parent="World/Interior/Hall" unique_id=1150089009]
 position = Vector2(-491, 60)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_a0jdd")
 region_enabled = true
 region_rect = Rect2(3072, 3072, 1024, 1024)
 
-[node name="Table2" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Table2" type="Sprite2D" parent="World/Interior/Hall" unique_id=485818529]
 position = Vector2(112.19995, 137)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(0, 3072, 1024, 1024)
 
-[node name="Candle" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Candle" type="Sprite2D" parent="World/Interior/Hall" unique_id=1051718047]
 position = Vector2(36.200195, 45)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(2048, 3072, 1024, 1024)
 
-[node name="Book2" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Book2" type="Sprite2D" parent="World/Interior/Hall" unique_id=1590349884]
 position = Vector2(122, 54)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(0, 2048, 1024, 1024)
 
-[node name="Vase" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Vase" type="Sprite2D" parent="World/Interior/Hall" unique_id=532981072]
 position = Vector2(200, 45)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(2072, 1024, 1024, 1024)
 
-[node name="Opened_Book" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Opened_Book" type="Sprite2D" parent="World/Interior/Hall" unique_id=1738077237]
 position = Vector2(87, 64)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(3072, 2048, 1024, 1024)
 
-[node name="Painting" type="Sprite2D" parent="World/Interior/Hall"]
+[node name="Painting" type="Sprite2D" parent="World/Interior/Hall" unique_id=423541701]
 position = Vector2(385, -22)
 scale = Vector2(0.35, 0.35)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(0, 3072, 1024, 1024)
 
-[node name="Lamp3" type="Sprite2D" parent="World/Interior/Hall"]
-position = Vector2(-339.2, -206.20007)
-scale = Vector2(0.4, 0.4)
-texture = SubResource("CompressedTexture2D_a0jdd")
-region_enabled = true
-region_rect = Rect2(3072, 5120, 1024, 1024)
-
-[node name="Lamp4" type="Sprite2D" parent="World/Interior/Hall"]
-position = Vector2(456.80005, -206.20007)
-scale = Vector2(0.4, 0.4)
-texture = SubResource("CompressedTexture2D_a0jdd")
-region_enabled = true
-region_rect = Rect2(3072, 5120, 1024, 1024)
-
-[node name="Interactables" type="Node2D" parent="."]
+[node name="Interactables" type="Node2D" parent="." unique_id=1597899739]
 position = Vector2(0, -40)
 
-[node name="Mid_Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite", "wall_mid")]
+[node name="Bedroom_Hall_Door" type="Area2D" parent="Interactables" unique_id=736233289 node_paths=PackedStringArray("ui_node", "sprite", "wall_mid", "bedroom_darkener", "hall_darkener", "bedroom_light_frame", "hall_light_frame")]
 position = Vector2(766.00006, 87)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("4_a8uiq")
@@ -338,24 +272,24 @@ sprite = NodePath("Sprite2D")
 wall_mid = NodePath("../../World/World_Boundaries/Wall_Mid")
 koordinat_buka = Rect2(3072, 2048, 1024, 1024)
 koordinat_tutup = Rect2(2048, 2048, 1024, 1024)
-bedroom_limit_left = -708
-bedroom_limit_right = 1024
-hall_limit_left = 560
-hall_limit_right = 2365
+bedroom_darkener = NodePath("../../Darkener/Bedroom_Darkener")
+hall_darkener = NodePath("../../Darkener/Hall_Darkener")
+bedroom_light_frame = NodePath("../../Light_Settings/Bedroom_Light")
+hall_light_frame = NodePath("../../Light_Settings/Hall_Light")
 door_x_min = 760.0
 door_x_max = 783.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Mid_Door"]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Bedroom_Hall_Door" unique_id=1149866425]
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(2048, 2048, 1024, 1024)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Mid_Door"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bedroom_Hall_Door" unique_id=1150597481]
 position = Vector2(17.142944, 0)
 scale = Vector2(19.999994, 19.999994)
 shape = SubResource("RectangleShape2D_fxsp2")
 
-[node name="Painting" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+[node name="Painting" type="Area2D" parent="Interactables" unique_id=1613659421 node_paths=PackedStringArray("ui_node", "sprite")]
 position = Vector2(-48.999985, 15.999992)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("5_lauwj")
@@ -366,19 +300,19 @@ region_open_full = Rect2(4096, 2048, 1024, 1024)
 region_open_empty = Rect2(5120, 2048, 1024, 1024)
 overlay_rect = Rect2(1024, 3072, 1024, 1024)
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Painting"]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Painting" unique_id=1379278103]
 position = Vector2(19.999985, 77.14285)
 scale = Vector2(0.8, 0.8)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(0, 3072, 1024, 1024)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Painting"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Painting" unique_id=409022960]
 position = Vector2(12.857094, 71.42856)
 scale = Vector2(0.7999999, 0.7999999)
 shape = SubResource("RectangleShape2D_a8uiq")
 
-[node name="Drawer" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+[node name="Drawer" type="Area2D" parent="Interactables" unique_id=1477459092 node_paths=PackedStringArray("ui_node", "sprite")]
 position = Vector2(134, 186.99997)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("5_lauwj")
@@ -386,63 +320,74 @@ ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
 is_locked = true
 correct_code = "6767"
+nama_item = "Kunci Kamar"
 region_closed = Rect2(2048, 3072, 1024, 1024)
 region_open_full = Rect2(4096, 3072, 1024, 1024)
 region_open_empty = Rect2(3072, 3072, 1024, 1024)
 overlay_rect = Rect2(5120, 3072, 1024, 1024)
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Drawer"]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Drawer" unique_id=65717561]
 position = Vector2(20.000015, -2.8571472)
 scale = Vector2(0.95, 0.95)
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(2048, 3072, 1024, 1024)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Drawer"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Drawer" unique_id=2069706540]
 position = Vector2(11.428589, -6.1035156e-05)
 scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_genkd")
 
-[node name="Parents_Door" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+[node name="Parents_Door" type="Area2D" parent="Interactables" unique_id=1876004028 node_paths=PackedStringArray("ui_node", "sprite", "wood_sprite", "wall_collision")]
 position = Vector2(1263, 88)
 script = ExtResource("8_a0jdd")
 ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
+wood_sprite = NodePath("Wood")
+wall_collision = NodePath("../../World/World_Boundaries/Wall_Mid")
 koordinat_buka = Rect2(1024, 0, 1024, 1024)
 koordinat_tutup = Rect2(0, 0, 1024, 1024)
+scene_dalam_kamar = "uid://dv7qy7g7h34a2"
+spawn_pos_kamar = Vector2(-624, 205)
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Parents_Door"]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Parents_Door" unique_id=998094654]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_w76b8")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 1024)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Parents_Door"]
+[node name="Wood" type="Sprite2D" parent="Interactables/Parents_Door" unique_id=1470042979]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_lifvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Parents_Door" unique_id=1445094861]
+position = Vector2(1, 0)
 scale = Vector2(0.35, 0.35)
 shape = SubResource("RectangleShape2D_w76b8")
 
-[node name="Stairs" type="Area2D" parent="Interactables" node_paths=PackedStringArray("ui_node", "sprite")]
+[node name="Stairs_Hall" type="Area2D" parent="Interactables" unique_id=1383518872 node_paths=PackedStringArray("ui_node", "sprite")]
 script = ExtResource("9_lifvk")
 ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
+target_pos = Vector2(-1904, 205)
 x_batas_kiri = 2112.0
 x_batas_kanan = 2360.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Stairs"]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Stairs_Hall" unique_id=206256677]
 position = Vector2(1396, 40)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_3oo7m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Stairs"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Stairs_Hall" unique_id=1694314541]
 position = Vector2(2232, 163)
 shape = SubResource("RectangleShape2D_a0jdd")
 
-[node name="Player" parent="." instance=ExtResource("1_bx5pa")]
+[node name="Player" parent="." unique_id=1868742402 instance=ExtResource("1_bx5pa")]
 position = Vector2(-447, 205)
 scale = Vector2(0.2, 0.2)
-script = ExtResource("2_0grwd")
+script = ExtResource("11_3oo7m")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=355101469]
 position = Vector2(0, -1039.9999)
 scale = Vector2(4.9999995, 4.9999995)
 limit_left = -708
@@ -451,7 +396,7 @@ limit_right = 2365
 limit_bottom = 0
 position_smoothing_enabled = true
 
-[node name="Light_Settings" type="Control" parent="."]
+[node name="Light_Settings" type="Control" parent="." unique_id=1180447370]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -640.0
@@ -460,7 +405,7 @@ offset_right = -600.0
 offset_bottom = -336.0
 mouse_filter = 2
 
-[node name="Dark" type="ColorRect" parent="Light_Settings"]
+[node name="Dark" type="ColorRect" parent="Light_Settings" unique_id=1759217006]
 layout_mode = 0
 offset_left = -192.0
 offset_top = -120.0
@@ -469,293 +414,121 @@ offset_bottom = 856.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.32941177)
 
-[node name="Bedroom" type="ColorRect" parent="Light_Settings"]
+[node name="Bedroom_Light" type="Control" parent="Light_Settings" unique_id=806917107]
+clip_children = 1
+clip_contents = true
+custom_minimum_size = Vector2(1080, 448)
+anchors_preset = 0
+offset_left = -519.0
+offset_top = 128.0
+offset_right = 1401.0
+offset_bottom = 576.0
+mouse_filter = 2
+
+[node name="Light1" type="ColorRect" parent="Light_Settings/Bedroom_Light" unique_id=1840866715]
 layout_mode = 0
-offset_left = 310.0
-offset_top = 161.0
-offset_right = 1142.0
-offset_bottom = 857.00006
+offset_left = 829.14636
+offset_top = 34.0
+offset_right = 1661.1464
+offset_bottom = 730.00006
 rotation = 0.7853982
 mouse_filter = 2
 color = Color(1, 1, 1, 0.078431375)
 
-[node name="Bedroom2" type="ColorRect" parent="Light_Settings"]
+[node name="Light2" type="ColorRect" parent="Light_Settings/Bedroom_Light" unique_id=525526921]
 layout_mode = 0
-offset_left = 1109.0
-offset_top = 161.0
-offset_right = 1941.0
-offset_bottom = 857.00006
+offset_left = 1628.1462
+offset_top = 34.0
+offset_right = 2460.1465
+offset_bottom = 730.00006
 rotation = 0.7853982
 mouse_filter = 2
 color = Color(1, 1, 1, 0.078431375)
 
-[node name="Hall" type="ColorRect" parent="Light_Settings"]
+[node name="Hall_Light" type="Control" parent="Light_Settings" unique_id=1300356610]
+clip_children = 1
+clip_contents = true
+custom_minimum_size = Vector2(1080, 448)
+anchors_preset = 0
+offset_left = 1424.0
+offset_top = 132.0
+offset_right = 3344.0
+offset_bottom = 580.0
+mouse_filter = 2
+
+[node name="Light1" type="ColorRect" parent="Light_Settings/Hall_Light" unique_id=1897378446]
 layout_mode = 0
-offset_left = 1766.1466
-offset_top = 164.0
-offset_right = 2598.1465
-offset_bottom = 860.00006
+offset_left = 345.14636
+offset_top = 38.0
+offset_right = 1177.1462
+offset_bottom = 734.00006
 rotation = 0.7853982
 mouse_filter = 2
 color = Color(1, 1, 1, 0.078431375)
 
-[node name="Hall2" type="ColorRect" parent="Light_Settings"]
+[node name="Light2" type="ColorRect" parent="Light_Settings/Hall_Light" unique_id=1438415769]
 layout_mode = 0
-offset_left = 2565.1465
-offset_top = 164.0
-offset_right = 3397.1465
-offset_bottom = 860.00006
+offset_left = 1141.1461
+offset_top = 39.0
+offset_right = 1973.1461
+offset_bottom = 735.00006
 rotation = 0.7853982
 mouse_filter = 2
 color = Color(1, 1, 1, 0.078431375)
 
-[node name="Border" type="Node2D" parent="."]
+[node name="Bedroom_Lamp1" type="Sprite2D" parent="Light_Settings" unique_id=216396972]
+position = Vector2(310, 161)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CompressedTexture2D_a0jdd")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
 
-[node name="BackgroundWithNoWallpapper" type="Sprite2D" parent="Border"]
+[node name="Bedroom_Lamp2" type="Sprite2D" parent="Light_Settings" unique_id=1772842314]
+position = Vector2(1109, 161)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CompressedTexture2D_a0jdd")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Hall_Lamp1" type="Sprite2D" parent="Light_Settings" unique_id=719502261]
+position = Vector2(1768.8, 169.79993)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_a0jdd")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Hall_Lamp2" type="Sprite2D" parent="Light_Settings" unique_id=271698235]
+position = Vector2(2564.8, 169.79993)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_a0jdd")
+region_enabled = true
+region_rect = Rect2(3072, 5120, 1024, 1024)
+
+[node name="Border" type="Node2D" parent="." unique_id=1816425282]
+
+[node name="BackgroundWithNoWallpapper" type="Sprite2D" parent="Border" unique_id=1735196469]
 position = Vector2(735.5, 0)
 scale = Vector2(0.44153646, 0.25)
 texture = ExtResource("10_obu57")
 
-[node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
-script = ExtResource("6_a8uiq")
-region_tutup = Rect2(0, 4096, 1024, 1024)
-region_buka = Rect2(1024, 4096, 1024, 1024)
+[node name="Darkener" type="Node2D" parent="." unique_id=1350118761]
 
-[node name="Dimmer" type="ColorRect" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
-
-[node name="Layer_Overlay" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ItemDisplay" type="TextureRect" parent="UI/Layer_Overlay"]
-custom_minimum_size = Vector2(315.8, 315.8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -157.90002
-offset_top = -157.90002
-offset_right = 157.90002
-offset_bottom = 157.90002
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-texture = SubResource("AtlasTexture_lauwj")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="CodeInput" type="Control" parent="UI/Layer_Overlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -157.90002
-offset_top = -157.90002
-offset_right = 157.90002
-offset_bottom = 157.90002
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_genkd")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 65.900024
-offset_top = 117.900024
-offset_right = -65.900024
-offset_bottom = -61.900024
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 25
-alignment = 1
-
-[node name="VBoxContainer1" type="VBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="BtnUp" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_3oo7m")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(24, 64)
-layout_mode = 2
-texture = SubResource("AtlasTexture_iyi55")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BtnDown" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_825tw")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="BtnUp" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_beks7")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(24, 64)
-layout_mode = 2
-texture = SubResource("AtlasTexture_mr31s")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BtnDown" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_pr1pa")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="BtnUp" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_beks7")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(24, 64)
-layout_mode = 2
-texture = SubResource("AtlasTexture_mr31s")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BtnDown" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_pr1pa")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="BtnUp" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_beks7")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(24, 64)
-layout_mode = 2
-texture = SubResource("AtlasTexture_mr31s")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BtnDown" type="TextureButton" parent="UI/Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_pr1pa")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="StaticHint" type="Label" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -128.0
-offset_right = 103.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("8_genkd")
-theme_override_font_sizes/font_size = 32
-text = "Klik untuk lanjut"
-
-[node name="GameMessage" type="Label" parent="UI"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 75.0
-offset_right = 20.0
-offset_bottom = 123.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("8_genkd")
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-
-[node name="InventoryBar" type="HBoxContainer" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -61.0
-offset_right = 20.0
-offset_bottom = -21.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="ScreenFade" type="ColorRect" parent="UI"]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Bedroom_Darkener" type="ColorRect" parent="Darkener" unique_id=72210583]
+offset_left = -988.0
+offset_top = -368.0
+offset_right = 772.0
+offset_bottom = 376.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.78431374)
+metadata/_edit_use_anchors_ = true
 
-[connection signal="gui_input" from="UI/Dimmer" to="UI" method="_on_dimmer_gui_input"]
-[connection signal="gui_input" from="UI/Layer_Overlay/ItemDisplay" to="UI" method="_on_item_display_gui_input"]
+[node name="Hall_Darkener" type="ColorRect" parent="Darkener" unique_id=1264468466]
+offset_left = 768.0
+offset_top = -368.0
+offset_right = 2528.0
+offset_bottom = 376.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78431374)
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" parent="." unique_id=1470543014 instance=ExtResource("13_a0jdd")]

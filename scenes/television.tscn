@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cw5i2hutuh05f"]
+
+[ext_resource type="Texture2D" uid="uid://c3cbkjhm5t85o" path="res://assets/interior/livingroom.png" id="1_ccm7p"]
+[ext_resource type="FontFile" uid="uid://ddon4cfyqv2bf" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_3fxiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fxiq"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcggj"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7rhp"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e67vq"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kdo7"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_korxf"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sexrb"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccm7p"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l3id"]
+atlas = ExtResource("1_ccm7p")
+region = Rect2(2048, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l3id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fxiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcggj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7rhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e67vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kdo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_korxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sexrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccm7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l3id")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="television" type="Node2D" unique_id=273317270]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=275323881]
+sprite_frames = SubResource("SpriteFrames_4l3id")
+frame = 7
+frame_progress = 0.3297684
+
+[node name="Label" type="Label" parent="." unique_id=1451084414]
+offset_left = 57.0
+offset_top = -128.0
+offset_right = 129.0
+offset_bottom = -110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3fxiq")
+text = "XX-XX-XXXX"
+horizontal_alignment = 1
+vertical_alignment = 1

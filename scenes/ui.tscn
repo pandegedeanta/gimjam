@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://ci1vqq2ckt0wk"]
+
+[ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="1_yev5y"]
+[ext_resource type="Texture2D" uid="uid://dvw0gl3kqe116" path="res://assets/others/button.png" id="2_gdt2y"]
+[ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="3_wm3ai"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3oo7m"]
+load_path = "res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lauwj"]
+atlas = SubResource("CompressedTexture2D_3oo7m")
+region = Rect2(1024, 3076, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_genkd"]
+atlas = SubResource("CompressedTexture2D_3oo7m")
+region = Rect2(0, 4096, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oo7m"]
+atlas = ExtResource("2_gdt2y")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0pu0a"]
+load_path = "res://.godot/imported/number.png-397eae437bfe1ecc178d6f37ede60e34.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyi55"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_0pu0a")
+region = Rect2(0, 0, 372, 1024)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_beks7"]
+load_path = "res://.godot/imported/button.png-0d7e16b15113293f152bbd2016c79d81.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_825tw"]
+atlas = SubResource("CompressedTexture2D_beks7")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beks7"]
+atlas = SubResource("CompressedTexture2D_beks7")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr31s"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_0pu0a")
+region = Rect2(0, 0, 372, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1pa"]
+atlas = SubResource("CompressedTexture2D_beks7")
+region = Rect2(0, 1024, 1024, 1024)
+
+[node name="UI" type="CanvasLayer" unique_id=1470543014]
+process_mode = 3
+script = ExtResource("1_yev5y")
+region_tutup = Rect2(0, 4096, 1024, 1024)
+region_buka = Rect2(1024, 4096, 1024, 1024)
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1982914122]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Layer_Overlay" type="Control" parent="." unique_id=1585255172]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDisplay" type="TextureRect" parent="Layer_Overlay" unique_id=1757976240]
+custom_minimum_size = Vector2(315.8, 315.8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.90002
+offset_top = -157.90002
+offset_right = 157.90002
+offset_bottom = 157.90002
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lauwj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TVContainer" type="SubViewportContainer" parent="Layer_Overlay" unique_id=313587431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Layer_Overlay/TVContainer" unique_id=1841638725]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+render_target_update_mode = 4
+
+[node name="CodeInput" type="Control" parent="Layer_Overlay" unique_id=777302302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Layer_Overlay/CodeInput" unique_id=1193633422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.90002
+offset_top = -157.90002
+offset_right = 157.90002
+offset_bottom = 157.90002
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_genkd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer_Overlay/CodeInput/TextureRect" unique_id=2017082169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.900024
+offset_top = 117.900024
+offset_right = -65.900024
+offset_bottom = -61.900024
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer" unique_id=290949222]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnUp" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1" unique_id=1427042865]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_3oo7m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1" unique_id=29173510]
+custom_minimum_size = Vector2(24, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_iyi55")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnDown" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer1" unique_id=118088579]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_825tw")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer" unique_id=1520803046]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnUp" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2" unique_id=1050237635]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_beks7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2" unique_id=389840395]
+custom_minimum_size = Vector2(24, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mr31s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnDown" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer2" unique_id=1806314401]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_pr1pa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer" unique_id=1615021326]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnUp" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3" unique_id=1135481118]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_beks7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3" unique_id=1617906063]
+custom_minimum_size = Vector2(24, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mr31s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnDown" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer3" unique_id=1477610662]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_pr1pa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer" unique_id=17711830]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnUp" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4" unique_id=1512461174]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_beks7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4" unique_id=255623776]
+custom_minimum_size = Vector2(24, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mr31s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnDown" type="TextureButton" parent="Layer_Overlay/CodeInput/TextureRect/HBoxContainer/VBoxContainer4" unique_id=1069417754]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_pr1pa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="StaticHint" type="Label" parent="." unique_id=2103543747]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -128.0
+offset_right = 103.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_wm3ai")
+theme_override_font_sizes/font_size = 32
+text = "Klik untuk lanjut"
+
+[node name="GameMessage" type="Label" parent="." unique_id=1240656087]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 75.0
+offset_right = 20.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_wm3ai")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="InventoryBar" type="HBoxContainer" parent="." unique_id=997705534]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -61.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ScreenFade" type="ColorRect" parent="." unique_id=1927039422]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="gui_input" from="Dimmer" to="." method="_on_dimmer_gui_input"]
+[connection signal="gui_input" from="Layer_Overlay/ItemDisplay" to="." method="_on_item_display_gui_input"]
