@@ -32,6 +32,14 @@ enum InteractType { ITEM, LETTER, SOUND_ONLY, TV }
 @export var tv_visual_root: Node2D 
 @export var sound_player: AudioStreamPlayer2D 
 
+@export_group("SFX Drawer")
+@export var sfx_open: AudioStream
+
+func play_sfx_open():
+	if sound_player and sfx_open:
+		sound_player.stream = sfx_open
+		sound_player.play()
+
 enum State { CLOSED, OPEN_FULL, OPEN_EMPTY }
 var current_state = State.CLOSED
 var item_taken = false
