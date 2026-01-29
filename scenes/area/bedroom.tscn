@@ -347,6 +347,8 @@ wood_sprite = NodePath("Wood")
 wall_collision = NodePath("../../World/World_Boundaries/Wall_Mid")
 koordinat_buka = Rect2(1024, 0, 1024, 1024)
 koordinat_tutup = Rect2(0, 0, 1024, 1024)
+scene_dalam_kamar = "uid://dv7qy7g7h34a2"
+spawn_pos_kamar = Vector2(-624, 205)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Parents_Door" unique_id=998094654]
 scale = Vector2(0.35, 0.35)

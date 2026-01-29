@@ -41,24 +41,13 @@ func _ready():
 		return
 
 	# --- BAGIAN PENTING (FIX CURSOR & MOUSE FILTER) ---
-	# Strategi: Bikin semua layer depan 'Tembus Pandang' (Ignore) terhadap mouse,
-	# kecuali tombol-tombol penting. Biar mouse selalu nembus ke Dimmer (Background).
-	
-	# 1. Dimmer: Wajib STOP agar menangkap mouse & Ubah cursor jadi Tangan
 	dimmer.mouse_filter = Control.MOUSE_FILTER_STOP
 	dimmer.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	
-	# 2. Layer Overlay (Wadah Utama): Wajib IGNORE agar mouse tembus ke Dimmer
 	layer_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	# 3. Konten Overlay (TV & Item): IGNORE juga, biar kalau hover TV tetap dianggap hover Dimmer
 	tv_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	item_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	# 4. Wadah Gembok (CodeInput): IGNORE biar background gembok tembus ke Dimmer
 	$Layer_Overlay/CodeInput.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	# 5. ScreenFade: Jangan halangi mouse
 	if screen_fade:
 		screen_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -68,6 +57,7 @@ func _ready():
 	tv_container.hide() 
 	static_hint.modulate.a = 0
 	game_message.modulate.a = 0
+	inventory_bar.show() # Pastikan inventory muncul di awal
 	
 	if screen_fade:
 		screen_fade.self_modulate.a = 1.0
@@ -168,28 +158,24 @@ func remove_from_inventory(item_name: String):
 		var slot = inventory_bar.get_node_or_null(item_name)
 		if slot: slot.queue_free()
 		inventory_items.erase(item_name)
-		
-		# Langsung tembak Global (Auto-load pasti ada)
 		Global.remove_item(item_name) 
 		print("UI: Perintah hapus ", item_name, " dikirim ke Global.")
 
 # --- SISTEM TV OVERLAY (SUBVIEWPORT) ---
 func show_tv_overlay(original_tv_node: Node2D):
 	get_tree().paused = true
+	inventory_bar.hide() # Sembunyikan inventory biar bersih
 	
 	dimmer.show()
 	layer_overlay.show()
 	$Layer_Overlay/CodeInput.hide()
 	item_display.hide()
 	
-	# Bersihkan sisa-sisa duplikat lama
 	for child in tv_viewport.get_children():
 		child.queue_free()
 		
-	# Tampilkan Container
 	tv_container.show()
 	
-	# DUPLIKASI TV
 	var tv_copy = original_tv_node.duplicate()
 	tv_copy.process_mode = Node.PROCESS_MODE_ALWAYS 
 	
@@ -243,6 +229,7 @@ func check_combination():
 
 func show_gembok(correct_code_str: String):
 	get_tree().paused = true
+	inventory_bar.hide()
 	is_unlocked = false
 	target_code_array.clear()
 	for i in range(correct_code_str.length()):
@@ -259,6 +246,7 @@ func show_gembok(correct_code_str: String):
 	tv_container.hide() 
 
 func show_item(tex: Texture):
+	inventory_bar.hide()
 	dimmer.show()
 	layer_overlay.show()
 	$Layer_Overlay/CodeInput.hide()
@@ -266,6 +254,47 @@ func show_item(tex: Texture):
 	item_display.texture = tex
 	item_display.show()
 	static_hint.modulate.a = 1.0
+
+# --- FUNGSI BARU (DARI TEMAN) ---
+
+func show_letter(text: String, tex: Texture, region: Rect2):
+	# Fungsi untuk menampilkan surat/dokumen
+	inventory_bar.hide()
+	dimmer.show()
+	layer_overlay.show()
+	$Layer_Overlay/CodeInput.hide()
+	tv_container.hide()
+
+	var atlas = AtlasTexture.new()
+	atlas.atlas = tex
+	atlas.region = region
+	item_display.texture = atlas
+	item_display.show()
+
+	game_message.text = text
+	game_message.modulate = Color.WHITE
+	game_message.modulate.a = 1.0
+	
+	static_hint.modulate.a = 1.0
+
+func show_hint(text: String):
+	# Fungsi untuk hint interaksi (dipakai Lemari)
+	if static_hint:
+		static_hint.text = text
+		var tween = create_tween()
+		tween.tween_property(static_hint, "modulate:a", 1.0, 0.2)
+
+func hide_hint():
+	# Sembunyikan hint interaksi
+	if static_hint:
+		var tween = create_tween()
+		tween.tween_property(static_hint, "modulate:a", 0.0, 0.2)
+
+func show_exit_hint():
+	show_hint("Tekan Enter untuk keluar")
+
+func hide_exit_hint():
+	hide_hint()
 
 # --- UTILS ---
 func show_message(txt: String, color: Color = Color.WHITE):
@@ -300,5 +329,10 @@ func hide_all():
 	tv_container.hide()
 	for child in tv_viewport.get_children():
 		child.queue_free()
-		
+	
+	# Bersihkan text surat (kalau ada)
+	game_message.text = ""
+	game_message.modulate.a = 0
+	
+	inventory_bar.show() # Tampilkan inventory lagi
 	get_tree().paused = false
