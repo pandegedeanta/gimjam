@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bq0op0ose0c4l" path="res://scripts/ui.gd" id="1_yev5y"]
 [ext_resource type="Texture2D" uid="uid://dvw0gl3kqe116" path="res://assets/others/button.png" id="2_gdt2y"]
 [ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="3_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://dru6i8fio6r8g" path="res://assets/interior/New Piskel (11).png" id="4_gdt2y"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3oo7m"]
 load_path = "res://.godot/imported/bedroom.png-a9f603d85c0bb041572a10a100348700.ctex"
@@ -110,8 +111,7 @@ canvas_item_default_texture_filter = 0
 render_target_update_mode = 4
 
 [node name="CodeInput" type="Control" parent="Layer_Overlay" unique_id=777302302]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -251,6 +251,107 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_pr1pa")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="CodePanel" type="Panel" parent="Layer_Overlay" unique_id=192048466]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageDisplay" type="TextureRect" parent="Layer_Overlay/CodePanel" unique_id=548175794]
+layout_mode = 0
+offset_left = -153.0
+offset_top = -153.0
+offset_right = -133.0
+offset_bottom = -131.375
+scale = Vector2(16, 16)
+texture = ExtResource("4_gdt2y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" type="TextureButton" parent="Layer_Overlay/CodePanel" unique_id=1422081510]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Display" type="Label" parent="Layer_Overlay/CodePanel" unique_id=1502877597]
+layout_mode = 0
+offset_left = -48.999985
+offset_top = -117.0
+offset_right = -9.647491
+offset_bottom = -93.793045
+scale = Vector2(2.871483, 1.3358061)
+theme_override_fonts/font = ExtResource("3_wm3ai")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Keypad" type="GridContainer" parent="Layer_Overlay/CodePanel" unique_id=624532562]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -57.0
+offset_top = -69.0
+offset_right = 14.0
+offset_bottom = 324.0
+scale = Vector2(1.7666177, 1.6381501)
+theme_override_constants/h_separation = 8
+columns = 3
+
+[node name="Btn1" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=2066275226]
+layout_mode = 2
+text = "1"
+
+[node name="Btn2" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1391298689]
+layout_mode = 2
+text = "2"
+
+[node name="Btn3" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1807612220]
+layout_mode = 2
+text = "3"
+
+[node name="Btn4" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1283429732]
+layout_mode = 2
+text = "4"
+
+[node name="Btn5" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1993337087]
+layout_mode = 2
+text = "5"
+
+[node name="Btn6" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=389557875]
+layout_mode = 2
+text = "6"
+
+[node name="Btn7" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=151196917]
+layout_mode = 2
+text = "7"
+
+[node name="Btn8" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=619131281]
+layout_mode = 2
+text = "8"
+
+[node name="Btn9" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=718690908]
+layout_mode = 2
+text = "9"
+
+[node name="BtnC" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=442674065]
+layout_mode = 2
+text = "C"
+
+[node name="Btn0" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1834499158]
+layout_mode = 2
+text = "0"
+
+[node name="BtnE" type="Button" parent="Layer_Overlay/CodePanel/Keypad" unique_id=1041369860]
+layout_mode = 2
+text = "E"
 
 [node name="StaticHint" type="Label" parent="." unique_id=2103543747]
 anchors_preset = 7

@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://15dcrow3q255"]
+[gd_scene format=3 uid="uid://15dcrow3q255"]
 
-[ext_resource type="Script" uid="uid://diba1a8xi8ixc" path="res://scripts/basement/brankas.gd" id="1_2c5us"]
+[ext_resource type="Script" uid="uid://diba1a8xi8ixc" path="res://scripts/interior/brankas.gd" id="1_2c5us"]
 [ext_resource type="Texture2D" uid="uid://cdrsdot6fwqqw" path="res://assets/interior/Brankas__Mayat-3.png" id="2_2c5us"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5umc"]

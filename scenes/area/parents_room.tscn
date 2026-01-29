@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1vgvvel2gwr4" path="res://assets/background/background_parents.png" id="3_m45qd"]
 [ext_resource type="Texture2D" uid="uid://umck328p3bad" path="res://assets/interior/bedroom.png" id="3_wa058"]
 [ext_resource type="AudioStream" uid="uid://3uxgdole6tbr" path="res://assets/All-Sound/Sound-Parent-Room/CLOCK SOUND.wav" id="4_hh1kk"]
-[ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="5_hh1kk"]
+[ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interior/interactable_object.gd" id="5_hh1kk"]
 [ext_resource type="Script" uid="uid://d0ikouynofaim" path="res://scripts/interior/parents_inside_door.gd" id="7_hh1kk"]
 [ext_resource type="Script" uid="uid://hlhjwh1m4an4" path="res://scripts/interior/wardrobe.gd" id="8_sqprf"]
 [ext_resource type="FontFile" uid="uid://copw1ojxa4anc" path="res://assets/fonts/IndieFlower-Regular.ttf" id="11_sqprf"]
@@ -117,6 +117,7 @@ ui_node = NodePath("../../UI")
 interaction_type = 1
 sprite = NodePath("Sprite2D")
 interaction_dist = 128.0
+region_open_full = Rect2(0, 1024, 1024, 1024)
 overlay_rect = Rect2(1024, 1024, 1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactable/Drawer" unique_id=44999403]

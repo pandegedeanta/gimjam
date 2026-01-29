@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://umck328p3bad" path="res://assets/interior/bedroom.png" id="5_6obgk"]
 [ext_resource type="Texture2D" uid="uid://ddfd8yfghv8n7" path="res://assets/interior/hall.png" id="5_jch7y"]
 [ext_resource type="Texture2D" uid="uid://fi718y34p2tk" path="res://assets/interior/chair.png" id="8_hlsx5"]
-[ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/mid_door.gd" id="9_h0cjh"]
-[ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interactable_object.gd" id="9_psefu"]
+[ext_resource type="Script" uid="uid://bg4k8eccc8ppt" path="res://scripts/interior/mid_door.gd" id="9_h0cjh"]
+[ext_resource type="Script" uid="uid://dc8l7fgcxixjd" path="res://scripts/interior/interactable_object.gd" id="9_psefu"]
 [ext_resource type="Script" uid="uid://d0oiymtejrjdk" path="res://scripts/interior/television.gd" id="10_50g85"]
 [ext_resource type="Texture2D" uid="uid://c777gk2yy6i1l" path="res://assets/background/background no Wallpaper.png" id="10_efgbj"]
-[ext_resource type="Script" uid="uid://cdvi6vhyh6x8j" path="res://scripts/stairs.gd" id="11_62wth"]
+[ext_resource type="Script" uid="uid://cdvi6vhyh6x8j" path="res://scripts/interior/stairs.gd" id="11_62wth"]
 [ext_resource type="PackedScene" uid="uid://dfv81o6ccfwxy" path="res://scenes/player.tscn" id="12_vtf0m"]
 [ext_resource type="Script" uid="uid://bfviqapwa0mw4" path="res://scripts/player/player.gd" id="13_h0cjh"]
 [ext_resource type="Texture2D" uid="uid://cpujnpm0a3fmr" path="res://assets/interior/hammer.png" id="13_psa84"]
@@ -396,6 +396,8 @@ ui_node = NodePath("../../UI")
 sprite = NodePath("Sprite2D")
 koordinat_buka = Rect2(1024, 0, 1024, 1024)
 koordinat_tutup = Rect2(0, 0, 1024, 1024)
+scene_basement = "uid://wvrbkq17q32i"
+spawn_pos_basement = Vector2(16, 205)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactable/Basement_Door" unique_id=1523878653]
 scale = Vector2(0.35, 0.35)
