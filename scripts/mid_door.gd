@@ -9,7 +9,7 @@ extends Area2D
 @export var jarak_toleransi: float = 128.0
 
 @export_group("Door Settings")
-@export var terkunci_secara_default: bool = true # <--- FITUR BARU!
+@export var terkunci_secara_default: bool = true # Centang untuk Pintu Kamar, Matikan untuk Living Room
 @export var nama_kunci_pasangan: String = "Kunci Kamar"
 @export var pesan_terkunci: String = "Pintu Terkunci..."
 
@@ -34,15 +34,20 @@ func _ready():
 	# 1. Muat State dari Global
 	var saved = Global.get_state(self.name)
 	if saved:
-		# Kalau sudah pernah disimpan, pakai data memory (apakah sudah dibuka player?)
 		sudah_di_unlock = saved.get("unlocked", false)
 		is_open = saved.get("is_open", false)
 	else:
-		# Kalau belum pernah disimpan (Game Baru), pakai settingan Inspector
-		# Jika 'terkunci_secara_default' dicentang (TRUE), maka 'sudah_di_unlock' = FALSE.
-		# Jika tidak dicentang (FALSE), maka 'sudah_di_unlock' = TRUE (langsung bisa dibuka).
 		sudah_di_unlock = not terkunci_secara_default
-		is_open = false # Default selalu tertutup di awal
+		is_open = false
+	
+	# ==========================================================
+	# 🔥 SOLUSI DARURAT (FORCE RESET) - HAPUS SETELAH BERHASIL 🔥
+	# Baris ini memaksa script MENGABAIKAN save data lama dan 
+	# menuruti settingan Inspector (terkunci_secara_default).
+	
+	sudah_di_unlock = not terkunci_secara_default
+	is_open = false
+	# ==========================================================
 	
 	# 2. Sinkronkan Visual & Darkener Awal
 	if is_open:
@@ -99,7 +104,7 @@ func eksekusi_pintu(player):
 			ui_node.show_message("Kunci ini tidak cocok.", Color.CORAL)
 		return
 
-	# LOGIKA BUKA TUTUP (Bisa dijalankan langsung kalau sudah_di_unlock = true)
+	# LOGIKA BUKA TUTUP
 	if is_open:
 		if player.global_position.x > door_x_min and player.global_position.x < door_x_max:
 			ui_node.show_message("Pintu terhalang badanmu!", Color.CORAL)
@@ -126,7 +131,6 @@ func tutup_pintu(player):
 	update_darkeners(player)
 
 func update_darkeners(player):
-	# PENTING: Tambahkan pengecekan 'if' agar tidak error jika slot darkener kosong
 	if is_open: return 
 	
 	if player.global_position.x <= (door_x_min + door_x_max) / 2:

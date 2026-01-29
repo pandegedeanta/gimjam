@@ -263,7 +263,7 @@ region_rect = Rect2(0, 3072, 1024, 1024)
 [node name="Interactables" type="Node2D" parent="." unique_id=1597899739]
 position = Vector2(0, -40)
 
-[node name="Mid_Door" type="Area2D" parent="Interactables" unique_id=736233289 node_paths=PackedStringArray("ui_node", "sprite", "wall_mid", "bedroom_darkener", "hall_darkener", "bedroom_light_frame", "hall_light_frame")]
+[node name="Bedroom_Hall_Door" type="Area2D" parent="Interactables" unique_id=736233289 node_paths=PackedStringArray("ui_node", "sprite", "wall_mid", "bedroom_darkener", "hall_darkener", "bedroom_light_frame", "hall_light_frame")]
 position = Vector2(766.00006, 87)
 scale = Vector2(0.34999996, 0.34999996)
 script = ExtResource("4_a8uiq")
@@ -279,12 +279,12 @@ hall_light_frame = NodePath("../../Light_Settings/Hall_Light")
 door_x_min = 760.0
 door_x_max = 783.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Mid_Door" unique_id=1149866425]
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Bedroom_Hall_Door" unique_id=1149866425]
 texture = SubResource("CompressedTexture2D_a0jdd")
 region_enabled = true
 region_rect = Rect2(2048, 2048, 1024, 1024)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Mid_Door" unique_id=1150597481]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bedroom_Hall_Door" unique_id=1150597481]
 position = Vector2(17.142944, 0)
 scale = Vector2(19.999994, 19.999994)
 shape = SubResource("RectangleShape2D_fxsp2")
